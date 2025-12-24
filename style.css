@@ -1,13 +1,12 @@
-/* ===== GLOBAL ===== */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     background: #f4f4f4;
+    transition: 0.3s;
 }
 
-/* ===== HEADER ===== */
 header {
-    background: #333;
+    background: #4a148c;
     color: white;
     padding: 15px;
     display: flex;
@@ -15,67 +14,40 @@ header {
     align-items: center;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-}
+nav ul { list-style: none; display: flex; gap: 15px; }
+nav a { color: white; text-decoration: none; font-weight: bold; }
+#themeBtn { cursor: pointer; background: transparent; border: none; color: white; }
 
-nav a {
-    color: white;
-    text-decoration: none;
-}
-
-/* ===== CARDS ===== */
 .card {
     background: white;
     margin: 20px;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: 0.3s;
 }
 
-/* ===== PROJECT CARD ===== */
+.profile-pic { width:150px; height:150px; border-radius:50%; display:block; margin-bottom:15px; }
+
 .project-card {
     border: 1px solid #ccc;
-    padding: 10px;
-    margin-top: 10px;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+    background: #e1bee7;
+    transition: transform 0.2s;
 }
+.project-card img { width: 100%; border-radius: 8px; margin-bottom:10px; }
+.project-card:hover { transform: scale(1.03); }
 
-/* ===== FORM ===== */
-form {
-    display: flex;
-    flex-direction: column;
-}
+form { display:flex; flex-direction: column; }
+input, textarea { margin-bottom:10px; padding:8px; border-radius:6px; border:1px solid #ccc; }
+button[type="submit"] { background:#4a148c; color:white; border:none; padding:10px; border-radius:6px; cursor:pointer; transition:0.3s; }
+button[type="submit"]:hover { background:#6a1b9a; }
 
-input, textarea {
-    margin-bottom: 10px;
-    padding: 8px;
-}
+footer { text-align:center; padding:15px; background:#4a148c; color:white; }
 
-/* ===== FOOTER ===== */
-footer {
-    text-align: center;
-    padding: 10px;
-    background: #333;
-    color: white;
-}
+.dark-mode { background:#121212; color:white; }
+.dark-mode header, .dark-mode footer, .dark-mode .card, .dark-mode .project-card { background:#1e1e1e; }
 
-/* ===== DARK MODE (Week 4) ===== */
-.dark-mode {
-    background: #121212;
-    color: white;
-}
-
-.dark-mode header,
-.dark-mode footer,
-.dark-mode .card {
-    background: #1e1e1e;
-}
-
-/* ===== RESPONSIVE (Week 3) ===== */
-@media (min-width: 768px) {
-    main {
-        width: 70%;
-        margin: auto;
-    }
-}
+@media (min-width: 768px) { main { width:70%; margin:auto; } }
