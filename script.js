@@ -1,34 +1,46 @@
-// Dark Mode
+/* ===== DARK MODE ===== */
 const themeBtn = document.getElementById("themeBtn");
+
 themeBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
 });
 
-// Projects
+/* ===== PROJECT DATA ===== */
 const projects = [
-    { title:"Portfolio Website", description:"Personal responsive portfolio website", image:"images/portfolio.png" },
-    { title:"BMI Calculator", description:"Simple BMI calculator using JavaScript", image:"images/bmi.png" },
-    { title:"COVID-19 Tracker", description:"Track COVID-19 stats using API", image:"images/covid.png" },
-    { title:"Weather App", description:"Real-time weather app using OpenWeather API", image:"images/weather.png" }
+    {
+        title: "Portfolio Website",
+        description: "Personal responsive portfolio website using HTML, CSS, and JavaScript."
+    },
+    {
+        title: "BMI Calculator",
+        description: "JavaScript-based BMI calculator for health monitoring."
+    },
+    {
+        title: "Medical Data Form",
+        description: "Simple form for collecting patient data."
+    }
 ];
 
 const container = document.getElementById("projectContainer");
-projects.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "project-card";
-    if(p.image) {
-        const img = document.createElement("img");
-        img.src = p.image; img.alt = p.title; card.appendChild(img);
-    }
-    const h3 = document.createElement("h3"); h3.textContent = p.title;
-    const pDesc = document.createElement("p"); pDesc.textContent = p.description;
-    card.appendChild(h3); card.appendChild(pDesc); container.appendChild(card);
+
+/* ===== LOAD PROJECTS ===== */
+projects.forEach(project => {
+    const div = document.createElement("div");
+    div.className = "project-card";
+
+    div.innerHTML = `
+        <h3>${project.title}</h3>
+        <p>${project.description}</p>
+    `;
+
+    container.appendChild(div);
 });
 
-// Contact Form
+/* ===== CONTACT FORM ===== */
 const form = document.getElementById("contactForm");
-form.addEventListener("submit", function(event){
-    event.preventDefault();
-    alert("Message Sent Successfully!");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert("Message sent successfully!");
     form.reset();
 });
