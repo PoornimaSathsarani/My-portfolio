@@ -1,12 +1,23 @@
 // ===== DARK MODE =====
 const themeBtn = document.getElementById("themeBtn");
+
+// Check LocalStorage
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    themeBtn.textContent = "☀️";
+}
+
 themeBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
-    themeBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+    const isDark = document.body.classList.contains("dark-mode");
+    themeBtn.textContent = isDark ? "☀️" : "🌙";
+    localStorage.setItem("theme", isDark ? "dark" : "light");
 });
 
 // Initialize EmailJS (Replace "YOUR_PUBLIC_KEY" with your actual key)
-emailjs.init("YOUR_PUBLIC_KEY");
+if (typeof emailjs !== 'undefined') {
+    emailjs.init("YOUR_PUBLIC_KEY");
+}
 
 // ===== CONTACT FORM =====
 const form = document.getElementById("contactForm");
@@ -56,6 +67,13 @@ form.addEventListener("submit", (e) => {
     const originalText = btn.innerText;
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+    if (typeof emailjs === 'undefined') {
+        alert("Email service not loaded. Check internet connection.");
+        btn.disabled = false;
+        btn.innerText = originalText;
+        return;
+    }
 
     emailjs.sendForm(serviceID, templateID, form)
         .then(() => {
@@ -129,9 +147,11 @@ backToTopBtn.addEventListener("click", () => {
 const mobileMenu = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-links');
 
-mobileMenu.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
+if (mobileMenu) {
+    mobileMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+}
 
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
