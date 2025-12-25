@@ -42,26 +42,32 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: 0.3s;
+    padding: 8px 15px;
+    border-radius: 5px;
 }
 
 .nav-links a:hover {
-    color: #00d2ff;
+    transform: scale(1.05);
 }
 
 .nav-links .nav-about {
-    color: #ff8a80; /* Light Red */
+    background-color: #ff8a80; /* Light Red */
+    color: #333;
 }
 
 .nav-links .nav-projects {
-    color: #b9f6ca; /* Light Green */
+    background-color: #b9f6ca; /* Light Green */
+    color: #333;
 }
 
 .nav-links .nav-skills {
-    color: #ffe57f; /* Amber */
+    background-color: #ffe57f; /* Amber */
+    color: #333;
 }
 
 .nav-links .nav-contact {
-    color: #80d8ff; /* Light Blue */
+    background-color: #80d8ff; /* Light Blue */
+    color: #333;
 }
 
 #themeBtn {
