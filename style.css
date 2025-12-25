@@ -66,13 +66,13 @@ footer{background:#333;color:#fff;padding:20px;text-align:center}
 .progress-bar{height:5px;background:#e91e63;width:0%}
 
 /* Blog */
-.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;max-width:900px;margin:0 auto}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;max-width:800px;margin:0 auto}
 .more-text{display:none}
-.blog-card{padding:15px}
-.blog-card h3{font-size:1.1rem;margin:10px 0 5px}
-.blog-card p{font-size:0.9rem}
-.blog-card img{width: 25px;;height:75px;object-fit:cover;border-radius:5px;display:block;margin:0 auto 10px}
-.share-btn{background:none;border:none;color:#4b0082;cursor:pointer;font-size:14px;margin-left:15px;font-weight:bold}
+.blog-card{padding:10px}
+.blog-card h3{font-size:1rem;margin:5px 0}
+.blog-card p{font-size:0.8rem}
+.blog-card img{width:100%;height:100px;object-fit:cover;border-radius:5px;display:block;margin:0 auto 10px}
+.share-btn{background:none;border:none;color:#4b0082;cursor:pointer;font-size:12px;margin-left:10px;font-weight:bold}
 .share-btn:hover{color:#e91e63}
 
 /* Lightbox */
