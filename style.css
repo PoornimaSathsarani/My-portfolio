@@ -71,7 +71,7 @@ footer{background:#333;color:#fff;padding:20px;text-align:center}
 .blog-card{padding:15px}
 .blog-card h3{font-size:1.1rem;margin:10px 0 5px}
 .blog-card p{font-size:0.9rem}
-.blog-card img{width:100%;height:150px;object-fit:cover;border-radius:5px;display:block;margin:0 auto 10px}
+.blog-card img{width: 25px;;height:75px;object-fit:cover;border-radius:5px;display:block;margin:0 auto 10px}
 .share-btn{background:none;border:none;color:#4b0082;cursor:pointer;font-size:14px;margin-left:15px;font-weight:bold}
 .share-btn:hover{color:#e91e63}
 
