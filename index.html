@@ -43,7 +43,7 @@
     <section id="about" class="container fade-in-section">
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
-            <img src="images/unname.jpg" alt="Profile Picture" class="profile-img">
+            <img src="images/profile.jpg" alt="Profile Picture" class="profile-img">
             <p>I am a Biomedical Technology student interested in programming, web development, and healthcare technologies.</p>
             <a href="cv.pdf" class="btn" download>Download CV</a>
         </div>
@@ -62,6 +62,7 @@
 
     <section id="projects" class="container bg-light">
         <h2 class="section-title">My Projects</h2>
+        <input type="text" id="projectSearch" placeholder="Search projects...">
         <div class="project-grid">
             <div class="project-card">
                 <div class="project-card-inner">
@@ -126,8 +127,9 @@
                 <div class="blog-content">
                     <p class="blog-date">Oct 25, 2023</p>
                     <h3>Understanding Web Accessibility</h3>
-                    <p>Why accessibility matters and how to implement it in your web projects.</p>
+                    <p>Why accessibility matters and how to implement it in your web projects. <span class="more-text">It ensures that people with disabilities can perceive, understand, navigate, and interact with the Web.</span></p>
                     <a href="#" class="read-more">Read More</a>
+                    <button class="share-btn"><i class="fas fa-share-alt"></i> Share</button>
                 </div>
             </div>
         </div>
@@ -158,6 +160,12 @@
             <h3 id="modalTitle"></h3>
             <p id="modalDescription"></p>
         </div>
+    </div>
+
+    <!-- Image Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>

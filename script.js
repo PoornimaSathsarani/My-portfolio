@@ -250,3 +250,103 @@ if (typingText) {
     }
     setTimeout(typeWriter, 500);
 }
+
+// ===== ACTIVE NAVIGATION LINK =====
+const sections = document.querySelectorAll("section");
+const navItems = document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 100) {
+            current = section.getAttribute("id");
+        }
+    });
+    navItems.forEach((a) => {
+        a.classList.remove("active");
+        if (a.getAttribute("href").includes(current) && current !== "") {
+            a.classList.add("active");
+        }
+    });
+});
+
+// ===== BLOG SHARE =====
+document.querySelectorAll('.share-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+        const card = btn.closest('.blog-card');
+        const title = card.querySelector('h3').innerText;
+        
+        const shareData = {
+            title: title,
+            text: `Check out this post: ${title}`,
+            url: window.location.href
+        };
+
+        try {
+            if (navigator.share) {
+                await navigator.share(shareData);
+            } else {
+                await navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
+                alert("Link copied to clipboard!");
+            }
+        } catch (err) {
+            console.error("Error sharing:", err);
+        }
+    });
+});
+
+// ===== PROJECT SEARCH =====
+const searchInput = document.getElementById('projectSearch');
+const projectCards = document.querySelectorAll('.project-card');
+
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        
+        projectCards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const desc = card.querySelector('p').textContent.toLowerCase();
+            
+            card.style.display = (title.includes(searchTerm) || desc.includes(searchTerm)) ? "block" : "none";
+        });
+    });
+}
+
+// ===== LIGHTBOX =====
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeLightbox = document.querySelector('.close-lightbox');
+
+document.querySelectorAll('.project-img').forEach(img => {
+    img.addEventListener('click', () => {
+        lightbox.style.display = "block";
+        lightboxImg.src = img.src;
+    });
+});
+
+closeLightbox.addEventListener('click', () => {
+    lightbox.style.display = "none";
+});
+
+lightbox.addEventListener('click', (e) => {
+    if (e.target !== lightboxImg) {
+        lightbox.style.display = "none";
+    }
+});
+
+// ===== BLOG READ MORE =====
+document.querySelectorAll('.read-more').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const moreText = btn.parentElement.querySelector('.more-text');
+        
+        if (moreText.style.display === "inline") {
+            moreText.style.display = "none";
+            btn.textContent = "Read More";
+        } else {
+            moreText.style.display = "inline";
+            btn.textContent = "Read Less";
+        }
+    });
+});

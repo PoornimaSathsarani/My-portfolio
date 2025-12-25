@@ -5,9 +5,10 @@ body{background:#f4f4f9;color:#333;line-height:1.6}
 .navbar{position:fixed;top:0;width:100%;padding:15px;display:flex;justify-content:space-between;background:#4b0082;color:#fff}
 .nav-links{display:flex;list-style:none}
 .nav-links a{color:#fff;padding:8px 12px;text-decoration:none}
+.nav-links a.active{background:#fff;color:#4b0082;border-radius:5px;font-weight:bold}
 
 /* Hero */
-.hero{height:100vh;background:linear-gradient(rgba(75,0,130,.8),rgba(75,0,130,.8));color:#fff;
+.hero{height:100vh;background:linear-gradient(rgba(75,0,130,.8),rgba(75,0,130,.8)),url('images/hero-bg.jpg');background-size:cover;background-position:center;color:#fff;
 display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
 .btn{padding:10px 25px;background:#fff;color:#4b0082;border-radius:25px;text-decoration:none;display:inline-block;margin:10px;font-weight:bold;transition:0.3s}
 .btn:hover{background:#e0e0e0;transform:scale(1.05)}
@@ -20,7 +21,9 @@ display:flex;flex-direction:column;justify-content:center;align-items:center;tex
 
 /* Projects */
 .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+#projectSearch{width:100%;max-width:400px;display:block;margin:0 auto 20px;padding:10px;border:1px solid #ccc;border-radius:5px}
 .project-card{background:#fff;padding:20px;border-radius:10px}
+.project-img{cursor:pointer;width:100%;height:auto;border-radius:5px}
 
 /* Skills */
 .skills{display:flex;justify-content:center;gap:30px}
@@ -37,6 +40,17 @@ footer{background:#333;color:#fff;padding:20px;text-align:center}
 /* Scroll Progress Bar */
 .progress-container{position:fixed;top:0;z-index:10001;width:100%;height:5px;background:transparent}
 .progress-bar{height:5px;background:#e91e63;width:0%}
+
+/* Blog */
+.more-text{display:none}
+.blog-card img{width:100%;height:auto;border-radius:5px}
+.share-btn{background:none;border:none;color:#4b0082;cursor:pointer;font-size:14px;margin-left:15px;font-weight:bold}
+.share-btn:hover{color:#e91e63}
+
+/* Lightbox */
+.lightbox{display:none;position:fixed;z-index:10002;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.9)}
+.lightbox-content{margin:auto;display:block;width:80%;max-width:700px;max-height:80vh;object-fit:contain;position:relative;top:50%;transform:translateY(-50%)}
+.close-lightbox{position:absolute;top:15px;right:35px;color:#f1f1f1;font-size:40px;font-weight:bold;cursor:pointer}
 
 /* Mobile */
 @media(max-width:768px){
