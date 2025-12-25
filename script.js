@@ -1,41 +1,42 @@
-// Dark Mode
+/* ===== DARK MODE ===== */
 const themeBtn = document.getElementById("themeBtn");
 
 themeBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
 });
 
-// Project Data
+/* ===== PROJECT DATA ===== */
 const projects = [
     {
         title: "Portfolio Website",
-        description: "Responsive portfolio using HTML, CSS, JS"
+        description: "Responsive portfolio using HTML, CSS and JS."
     },
     {
         title: "BMI Calculator",
-        description: "JavaScript BMI calculator"
+        description: "JavaScript based BMI calculator."
     },
     {
         title: "Medical Form",
-        description: "Patient data collection form"
+        description: "Client-side form validation project."
     }
 ];
 
 const container = document.getElementById("projectContainer");
 
+/* ===== LOAD PROJECTS ===== */
 projects.forEach(project => {
-    const div = document.createElement("div");
-    div.className = "project-card";
+    const card = document.createElement("div");
+    card.className = "project-card";
 
-    div.innerHTML = `
+    card.innerHTML = `
         <h3>${project.title}</h3>
         <p>${project.description}</p>
     `;
 
-    container.appendChild(div);
+    container.appendChild(card);
 });
 
-// Contact Form
+/* ===== CONTACT FORM ===== */
 const form = document.getElementById("contactForm");
 
 form.addEventListener("submit", (e) => {
