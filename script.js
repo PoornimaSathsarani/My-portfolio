@@ -35,8 +35,7 @@ window.addEventListener('scroll', () => {
         const barPos = bar.getBoundingClientRect().top;
         const screenPos = window.innerHeight / 1.2;
         if(barPos < screenPos){
-            bar.style.width = bar.style.width; // already defined inline
+            bar.style.width = bar.getAttribute('data-width');
         }
     });
 });
-
