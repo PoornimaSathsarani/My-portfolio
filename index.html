@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>D.P.S. Wijenayake | Portfolio</title>
-
-    <!-- Mobile responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
@@ -15,13 +16,12 @@
 <!-- ===== HEADER ===== -->
 <header>
     <h1>D.P.S. Wijenayake</h1>
-
     <nav>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
     </nav>
-
     <button id="themeBtn">🌙</button>
 </header>
 
@@ -34,11 +34,8 @@
 <!-- ===== ABOUT ===== -->
 <section id="about" class="card">
     <h2>About Me</h2>
-    <img src="images/profile.jpg" alt="Profile Photo" class="profile-pic">
-    <p>
-        I am a Biomedical Technology student interested in programming,
-        web development, and healthcare technologies.
-    </p>
+    <img src="images/two.jpeg" alt="two">
+    <p>I am a Biomedical Technology student interested in programming, web development, and healthcare technologies.</p>
 </section>
 
 <!-- ===== PROJECTS ===== -->
@@ -47,10 +44,28 @@
     <div id="projectContainer"></div>
 </section>
 
+<!-- ===== SKILLS ===== -->
+<section id="skills" class="card">
+    <h2>My Skills</h2>
+    <div class="skills">
+        <div class="skill">
+            <span class="skill-name">HTML/CSS</span>
+            <div class="skill-bar"><div style="width:90%"></div></div>
+        </div>
+        <div class="skill">
+            <span class="skill-name">JavaScript</span>
+            <div class="skill-bar"><div style="width:75%"></div></div>
+        </div>
+        <div class="skill">
+            <span class="skill-name">Python</span>
+            <div class="skill-bar"><div style="width:65%"></div></div>
+        </div>
+    </div>
+</section>
+
 <!-- ===== CONTACT ===== -->
 <section id="contact" class="card">
     <h2>Contact Me</h2>
-
     <form id="contactForm">
         <input type="text" id="name" placeholder="Your Name" required>
         <input type="email" id="email" placeholder="Your Email" required>
@@ -68,6 +83,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
-
-
