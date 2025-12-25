@@ -48,6 +48,22 @@ body {
     color: #00d2ff;
 }
 
+.nav-links .nav-about {
+    color: #ff8a80; /* Light Red */
+}
+
+.nav-links .nav-projects {
+    color: #b9f6ca; /* Light Green */
+}
+
+.nav-links .nav-skills {
+    color: #ffe57f; /* Amber */
+}
+
+.nav-links .nav-contact {
+    color: #80d8ff; /* Light Blue */
+}
+
 #themeBtn {
     background: none;
     border: none;
