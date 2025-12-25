@@ -34,13 +34,29 @@ function validateEmail(email) {
 }
 
 // ===== SKILL BAR ANIMATION =====
-const skillBars = document.querySelectorAll('.bar .progress');
+const skillCircles = document.querySelectorAll('.skill-circle');
 window.addEventListener('scroll', () => {
-    skillBars.forEach(bar => {
-        const barPos = bar.getBoundingClientRect().top;
+    skillCircles.forEach(circle => {
+        const circlePos = circle.getBoundingClientRect().top;
         const screenPos = window.innerHeight / 1.2;
-        if(barPos < screenPos){
-            bar.style.width = bar.getAttribute('data-width');
+        
+        if(circlePos < screenPos && !circle.classList.contains('animated')){
+            circle.classList.add('animated');
+            const percent = parseInt(circle.getAttribute('data-percentage'));
+            const outer = circle.querySelector('.outer-circle');
+            const number = circle.querySelector('.number');
+            let counter = 0;
+            
+            const interval = setInterval(() => {
+                if(counter >= percent){
+                    clearInterval(interval);
+                } else {
+                    counter++;
+                    number.textContent = `${counter}%`;
+                    const angle = counter * 3.6;
+                    outer.style.background = `conic-gradient(#e91e63 ${angle}deg, #ddd ${angle}deg)`;
+                }
+            }, 20);
         }
     });
 });
@@ -139,3 +155,25 @@ window.addEventListener('load', () => {
         preloader.style.display = 'none';
     }, 500);
 });
+
+// ===== TESTIMONIAL SLIDER =====
+const slides = document.querySelectorAll(".testimonial-slide");
+const prevBtn = document.querySelector(".prev-btn");
+const nextBtn = document.querySelector(".next-btn");
+let slideIndex = 0;
+
+if (slides.length > 0) {
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove("active"));
+        slideIndex = (index + slides.length) % slides.length;
+        slides[slideIndex].classList.add("active");
+    }
+
+    if(prevBtn) prevBtn.addEventListener("click", () => showSlide(slideIndex - 1));
+    if(nextBtn) nextBtn.addEventListener("click", () => showSlide(slideIndex + 1));
+
+    // Auto slide
+    setInterval(() => {
+        showSlide(slideIndex + 1);
+    }, 5000);
+}
