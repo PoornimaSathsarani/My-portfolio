@@ -49,7 +49,7 @@ display:flex;flex-direction:column;justify-content:center;align-items:center;tex
 .inner-circle{height:90px;width:90px;border-radius:50%;background:#f4f4f9;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.2rem}
 
 /* Services & Blog Cards */
-.service-card,.blog-card{background:#fff;padding:20px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);transition:transform 0.3s}
+.service-card,.blog-card{background:#78acd6;padding:20px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);transition:transform 0.3s}
 .service-card:hover,.blog-card:hover{transform:translateY(-5px)}
 
 /* Contact */
@@ -85,13 +85,13 @@ body.dark-mode .navbar{background:#222}
 body.dark-mode .inner-circle{background:#121212;color:#e0e0e0}
 
 /* Dark Mode Section Overrides */
-body.dark-mode #about { background-color: #121212; }
-body.dark-mode #projects { background-color: #1a1a2e; }
-body.dark-mode #skills { background-color: #16213e; }
-body.dark-mode #services { background-color: #1a1a1a; }
-body.dark-mode #testimonials { background-color: #1f1f1f; }
-body.dark-mode #blog { background-color: #252525; }
-body.dark-mode #contact { background-color: #0f0f0f; }
+body.dark-mode #about { background-color: #e09c74; }
+body.dark-mode #projects { background-color: #9ad835; }
+body.dark-mode #skills { background-color: #385ab9; }
+body.dark-mode #services { background-color: #a54aa8; }
+body.dark-mode #testimonials { background-color: #a05656; }
+body.dark-mode #blog { background-color: #866b38; }
+body.dark-mode #contact { background-color: #77a892; }
 
 /* Mobile */
 @media(max-width:768px){
