@@ -18,12 +18,18 @@ display:flex;flex-direction:column;justify-content:center;align-items:center;tex
 /* Sections */
 .container{padding:60px 10%;text-align:center}
 .profile-img{width:180px;height:180px;border-radius:50%}
+.bg-light{background:#fff}
 
 /* Projects */
 .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
 #projectSearch{width:100%;max-width:400px;display:block;margin:0 auto 20px;padding:10px;border:1px solid #ccc;border-radius:5px}
-.project-card{background:#fff;padding:20px;border-radius:10px}
-.project-img{cursor:pointer;width:100%;height:auto;border-radius:5px}
+.project-card{background:transparent;height:300px;perspective:1000px}
+.project-card-inner{position:relative;width:100%;height:100%;text-align:center;transition:transform 0.6s;transform-style:preserve-3d}
+.project-card:hover .project-card-inner{transform:rotateY(180deg)}
+.project-card-front,.project-card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:10px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;box-shadow:0 4px 8px rgba(0,0,0,0.1)}
+.project-card-front{background:#fff;color:#333}
+.project-card-back{background:#4b0082;color:#fff;transform:rotateY(180deg)}
+.project-img{cursor:pointer;width:100%;max-height:180px;object-fit:cover;border-radius:5px;margin-bottom:15px}
 
 /* Skills */
 .skills{display:flex;justify-content:center;gap:30px}
@@ -51,6 +57,13 @@ footer{background:#333;color:#fff;padding:20px;text-align:center}
 .lightbox{display:none;position:fixed;z-index:10002;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.9)}
 .lightbox-content{margin:auto;display:block;width:80%;max-width:700px;max-height:80vh;object-fit:contain;position:relative;top:50%;transform:translateY(-50%)}
 .close-lightbox{position:absolute;top:15px;right:35px;color:#f1f1f1;font-size:40px;font-weight:bold;cursor:pointer}
+
+/* Dark Mode */
+body.dark-mode{background:#121212;color:#e0e0e0}
+body.dark-mode .bg-light{background:#1e1e1e}
+body.dark-mode .project-card-front,body.dark-mode .service-card,body.dark-mode .blog-card,body.dark-mode .modal-content{background:#2d2d2d;color:#e0e0e0}
+body.dark-mode input,body.dark-mode textarea{background:#333;color:#fff;border:1px solid #555}
+body.dark-mode .navbar{background:#222}
 
 /* Mobile */
 @media(max-width:768px){
