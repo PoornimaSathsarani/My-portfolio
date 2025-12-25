@@ -11,6 +11,7 @@
 
     <nav class="navbar">
         <div class="logo">D.P.S. Wijenayake</div>
+        <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
         <ul class="nav-links">
             <li><a href="#about" class="nav-about">About</a></li>
             <li><a href="#projects" class="nav-projects">Projects</a></li>
@@ -21,7 +22,7 @@
     </nav>
 
     <header class="hero">
-        <h1>Biomedical Technology Student</h1>
+        <h1 class="typing-text">Biomedical Technology Student</h1>
         <p>Learning Web Application Development</p>
     </header>
 
@@ -38,16 +39,34 @@
         <h2 class="section-title">My Projects</h2>
         <div class="project-grid">
             <div class="project-card">
-                <h3>Portfolio Website</h3>
-                <p>Responsive portfolio using HTML, CSS, JS.</p>
+                <div class="project-card-inner">
+                    <div class="project-card-front">
+                        <h3>Portfolio Website</h3>
+                    </div>
+                    <div class="project-card-back">
+                        <p>Responsive portfolio using HTML, CSS, JS.</p>
+                    </div>
+                </div>
             </div>
             <div class="project-card">
-                <h3>BMI Calculator</h3>
-                <p>JavaScript based BMI calculator for health tracking.</p>
+                <div class="project-card-inner">
+                    <div class="project-card-front">
+                        <h3>BMI Calculator</h3>
+                    </div>
+                    <div class="project-card-back">
+                        <p>JavaScript based BMI calculator for health tracking.</p>
+                    </div>
+                </div>
             </div>
             <div class="project-card">
-                <h3>Medical Form</h3>
-                <p>Client-side form validation project for patient data.</p>
+                <div class="project-card-inner">
+                    <div class="project-card-front">
+                        <h3>Medical Form</h3>
+                    </div>
+                    <div class="project-card-back">
+                        <p>Client-side form validation project for patient data.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -83,6 +102,8 @@
     <footer>
         <p>&copy; 2025 D.P.S. Wijenayake. All Rights Reserved.</p>
     </footer>
+
+    <button id="backToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
     <script src="script.js"></script>
 </body>
