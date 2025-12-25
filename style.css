@@ -10,18 +10,13 @@ body {
     transition: 0.3s;
 }
 
-/* ===== HEADER ===== */
 header {
     background: #512da8;
     color: white;
     padding: 15px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-}
-
-header h1 {
-    font-size: 20px;
+    align-items: center;
 }
 
 nav a {
@@ -32,56 +27,44 @@ nav a {
 }
 
 #themeBtn {
-    background: transparent;
+    background: none;
     border: none;
+    color: white;
     font-size: 20px;
     cursor: pointer;
-    color: white;
 }
 
-/* ===== HERO ===== */
 .hero {
     background: linear-gradient(to right, #673ab7, #9575cd);
     color: white;
     text-align: center;
-    padding: 50px 20px;
+    padding: 50px;
 }
 
-/* ===== CARDS ===== */
 .card {
     background: white;
     margin: 30px auto;
     padding: 25px;
-    border-radius: 12px;
-    width: 90%;
     max-width: 800px;
+    border-radius: 12px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 
-/* ===== PROFILE IMAGE ===== */
 .profile-pic {
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     display: block;
     margin: 15px auto;
-    border: 4px solid #673ab7;
 }
 
-/* ===== PROJECT CARDS ===== */
 .project-card {
     background: #ede7f6;
     padding: 15px;
     margin-top: 15px;
     border-radius: 10px;
-    transition: transform 0.2s;
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-}
-
-/* ===== FORM ===== */
 form {
     display: flex;
     flex-direction: column;
@@ -89,25 +72,17 @@ form {
 
 input, textarea {
     padding: 10px;
-    margin-bottom: 12px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+    margin-bottom: 10px;
 }
 
 button {
-    padding: 10px;
     background: #512da8;
     color: white;
     border: none;
-    border-radius: 6px;
+    padding: 10px;
     cursor: pointer;
 }
 
-button:hover {
-    background: #673ab7;
-}
-
-/* ===== FOOTER ===== */
 footer {
     background: #512da8;
     color: white;
@@ -115,7 +90,7 @@ footer {
     padding: 15px;
 }
 
-/* ===== DARK MODE ===== */
+/* DARK MODE */
 .dark-mode {
     background: #121212;
     color: white;
@@ -129,8 +104,3 @@ footer {
 .dark-mode .card {
     background: #1f1f1f;
 }
-
-.dark-mode .project-card {
-    background: #2a2a2a;
-}
-

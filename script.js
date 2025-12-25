@@ -1,29 +1,28 @@
-/* ===== DARK MODE ===== */
+// Dark Mode
 const themeBtn = document.getElementById("themeBtn");
 
 themeBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
 });
 
-/* ===== PROJECT DATA ===== */
+// Project Data
 const projects = [
     {
         title: "Portfolio Website",
-        description: "Personal responsive portfolio website using HTML, CSS, and JavaScript."
+        description: "Responsive portfolio using HTML, CSS, JS"
     },
     {
         title: "BMI Calculator",
-        description: "JavaScript-based BMI calculator for health monitoring."
+        description: "JavaScript BMI calculator"
     },
     {
-        title: "Medical Data Form",
-        description: "Simple form for collecting patient data."
+        title: "Medical Form",
+        description: "Patient data collection form"
     }
 ];
 
 const container = document.getElementById("projectContainer");
 
-/* ===== LOAD PROJECTS ===== */
 projects.forEach(project => {
     const div = document.createElement("div");
     div.className = "project-card";
@@ -36,7 +35,7 @@ projects.forEach(project => {
     container.appendChild(div);
 });
 
-/* ===== CONTACT FORM ===== */
+// Contact Form
 const form = document.getElementById("contactForm");
 
 form.addEventListener("submit", (e) => {
