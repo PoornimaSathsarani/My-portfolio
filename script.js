@@ -9,9 +9,29 @@ themeBtn.addEventListener("click", () => {
 const form = document.getElementById("contactForm");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    
+    const name = form.querySelector('input[type="text"]').value.trim();
+    const email = form.querySelector('input[type="email"]').value.trim();
+    const message = form.querySelector('textarea').value.trim();
+
+    if (name === "" || email === "" || message === "") {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    if (!validateEmail(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
     alert("Message sent successfully!");
     form.reset();
 });
+
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
 
 // ===== SKILL BAR ANIMATION =====
 const skillBars = document.querySelectorAll('.bar .progress');
@@ -52,4 +72,70 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
     });
+});
+
+// ===== NAVBAR SCROLL EFFECT =====
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// ===== MODAL =====
+const modal = document.getElementById("projectModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDescription");
+const closeBtn = document.querySelector(".close-modal");
+
+document.querySelectorAll(".btn-details").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        const card = e.target.closest(".project-card-inner");
+        const title = card.querySelector("h3").innerText;
+        const desc = card.querySelector(".project-card-back p").innerText;
+        
+        modalTitle.innerText = title;
+        modalDesc.innerText = desc;
+        modal.style.display = "flex";
+    });
+});
+
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+    if (e.target == modal) {
+        modal.style.display = "none";
+    }
+});
+
+// ===== FADE IN ANIMATION =====
+const observerOptions = {
+    threshold: 0.2
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in-section').forEach(section => {
+    observer.observe(section);
+});
+
+// ===== PRELOADER =====
+const preloader = document.getElementById('preloader');
+
+window.addEventListener('load', () => {
+    preloader.style.opacity = '0';
+    setTimeout(() => {
+        preloader.style.display = 'none';
+    }, 500);
 });

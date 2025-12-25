@@ -16,15 +16,21 @@ body {
 
 /* Navbar */
 .navbar {
-    background: #4B0082; /* Deep Purple */
+    background: transparent;
     color: white;
     padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
     z-index: 1000;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.navbar.scrolled {
+    background: #4B0082; /* Deep Purple */
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
@@ -79,8 +85,11 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(75, 0, 130, 0.8), rgba(75, 0, 130, 0.8)), url('hero-bg.jpg');
+    background: linear-gradient(rgba(75, 0, 130, 0.8), rgba(75, 0, 130, 0.8)), url('images/hero-bg.jpg');
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: white;
     text-align: center;
     padding: 100px 20px;
@@ -89,6 +98,23 @@ body {
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 10px;
+}
+
+.btn-hire {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 30px;
+    background: #fff;
+    color: #4B0082;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-hire:hover {
+    background: #e0e0e0;
+    transform: scale(1.05);
 }
 
 /* Typing Animation */
@@ -147,6 +173,7 @@ body {
     border: 5px solid #4B0082;
     margin-bottom: 20px;
     transition: transform 0.3s ease;
+    object-fit: cover;
 }
 
 .profile-img:hover {
@@ -167,6 +194,18 @@ body {
 .btn-download:hover {
     background: #310054;
     transform: translateY(-3px);
+}
+
+/* Fade In Animation */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Project Cards */
@@ -221,6 +260,18 @@ body {
     background-color: #4B0082;
     color: white;
     transform: rotateY(180deg);
+}
+
+.btn-details {
+    margin-top: 15px;
+    padding: 8px 20px;
+    background: white;
+    color: #4B0082;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 /* Skill Bars */
@@ -292,6 +343,10 @@ footer {
     background-color: #1e1e1e;
 }
 
+.dark-mode .modal-content {
+    background-color: #1e1e1e;
+}
+
 /* Back to Top Button */
 #backToTopBtn {
     display: none;
@@ -347,4 +402,71 @@ footer {
         margin: 15px 0;
         text-align: center;
     }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.4s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #4B0082;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
