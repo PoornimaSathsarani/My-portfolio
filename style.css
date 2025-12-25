@@ -22,6 +22,15 @@ display:flex;flex-direction:column;justify-content:center;align-items:center;tex
 .profile-img{width:180px;height:180px;border-radius:50%}
 .bg-light{background:#fff}
 
+/* Section Colors */
+#about { background-color: #ffffff; }
+#projects { background-color: #f0f8ff; } /* AliceBlue */
+#skills { background-color: #f3e5f5; } /* LavenderBlush tint */
+#services { background-color: #f5fffa; } /* MintCream */
+#testimonials { background-color: #fdf5e6; } /* OldLace */
+#blog { background-color: #fff0f5; } /* LavenderBlush */
+#contact { background-color: #e6e6fa; } /* Lavender */
+
 /* Projects */
 .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
 #projectSearch{width:100%;max-width:400px;display:block;margin:0 auto 20px;padding:10px;border:1px solid #ccc;border-radius:5px}
@@ -34,7 +43,10 @@ display:flex;flex-direction:column;justify-content:center;align-items:center;tex
 .project-img{cursor:pointer;width:100%;max-height:180px;object-fit:cover;border-radius:5px;margin-bottom:15px}
 
 /* Skills */
-.skills{display:flex;justify-content:center;gap:30px}
+.skills-grid{display:flex;justify-content:center;gap:30px;flex-wrap:wrap}
+.skill-circle{text-align:center;width:150px}
+.outer-circle{height:120px;width:120px;border-radius:50%;background:#ddd;margin:0 auto 15px;display:flex;align-items:center;justify-content:center}
+.inner-circle{height:90px;width:90px;border-radius:50%;background:#f4f4f9;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.2rem}
 
 /* Services & Blog Cards */
 .service-card,.blog-card{background:#fff;padding:20px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);transition:transform 0.3s}
@@ -70,6 +82,16 @@ body.dark-mode .bg-light{background:#1e1e1e}
 body.dark-mode .project-card-front,body.dark-mode .service-card,body.dark-mode .blog-card,body.dark-mode .modal-content{background:#2d2d2d;color:#e0e0e0}
 body.dark-mode input,body.dark-mode textarea{background:#333;color:#fff;border:1px solid #555}
 body.dark-mode .navbar{background:#222}
+body.dark-mode .inner-circle{background:#121212;color:#e0e0e0}
+
+/* Dark Mode Section Overrides */
+body.dark-mode #about { background-color: #121212; }
+body.dark-mode #projects { background-color: #1a1a2e; }
+body.dark-mode #skills { background-color: #16213e; }
+body.dark-mode #services { background-color: #1a1a1a; }
+body.dark-mode #testimonials { background-color: #1f1f1f; }
+body.dark-mode #blog { background-color: #252525; }
+body.dark-mode #contact { background-color: #0f0f0f; }
 
 /* Mobile */
 @media(max-width:768px){
