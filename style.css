@@ -17,7 +17,7 @@ nav a:hover { color:#ffca28; }
 .card { background:white; max-width:900px; width:90%; margin:30px auto; padding:30px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
 
 /* ===== PROFILE IMAGE ===== */
-.profile-pic { width:150px; height:150px; border-radius:50%; display:block; margin:20px auto; border:4px solid #673ab7; }
+.profile-pic { width:50px; height:50px; border-radius:25%; display:block; margin:10px auto; border:2px solid #673ab7; }
 
 /* ===== PROJECTS ===== */
 #projects { display:grid; grid-template-columns:1fr; gap:20px; }
@@ -28,12 +28,12 @@ nav a:hover { color:#ffca28; }
 /* ===== FORM ===== */
 form { display:flex; flex-direction:column; }
 input, textarea { padding:12px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc; transition:0.3s; }
-input:focus, textarea:focus { border-color:#512da8; outline:none; }
-button { padding:12px; background:#512da8; color:white; border:none; border-radius:6px; cursor:pointer; transition:0.3s; }
-button:hover { background:#673ab7; }
+input:focus, textarea:focus { border-color:#26e485; outline:none; }
+button { padding:12px; background:#11ec7e; color:white; border:none; border-radius:6px; cursor:pointer; transition:0.3s; }
+button:hover { background:#06eb65; }
 
 /* ===== FOOTER ===== */
-footer { background:#512da8; color:white; text-align:center; padding:20px; }
+footer { background:#08ddd2; color:white; text-align:center; padding:20px; }
 
 /* ===== DARK MODE ===== */
 .dark-mode { background:#121212; color:white; }
@@ -41,11 +41,11 @@ footer { background:#512da8; color:white; text-align:center; padding:20px; }
 .dark-mode .card { background:#1f1f1f; }
 .dark-mode .project-card { background:#2a2a2a; }
 .dark-mode input, .dark-mode textarea { background:#2a2a2a; color:white; border:1px solid #555; }
-.dark-mode button { background:#673ab7; }
+.dark-mode button { background:#f137aa; }
 
 /* ===== SKILLS ===== */
 .skills { display:flex; flex-direction:column; gap:15px; }
 .skill { display:flex; flex-direction:column; }
 .skill-name { margin-bottom:5px; font-weight:bold; }
 .skill-bar { width:100%; background:#ddd; border-radius:8px; overflow:hidden; }
-.skill-bar div { height:15px; background:#512da8; width:0; }
+.skill-bar div { height:15px; background:#f147a5; width:0; }
