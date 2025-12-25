@@ -5,16 +5,35 @@ themeBtn.addEventListener("click", () => {
     themeBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
 });
 
+// Initialize EmailJS (Replace "YOUR_PUBLIC_KEY" with your actual key)
+emailjs.init("YOUR_PUBLIC_KEY");
+
 // ===== CONTACT FORM =====
 const form = document.getElementById("contactForm");
+
+// Auto-format phone number as (XXX) XXX-XXXX
+const phoneInput = form.querySelector('input[name="user_phone"]');
+phoneInput.addEventListener('input', (e) => {
+    const x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+    e.target.value = !x[2] ? x[1] : `(${x[1]}) ${x[2]}${x[3] ? `-${x[3]}` : ''}`;
+});
+
+// Character Counter
+const messageInput = form.querySelector('textarea[name="message"]');
+const charCount = document.getElementById('charCount');
+messageInput.addEventListener('input', () => {
+    charCount.textContent = `${messageInput.value.length}/${messageInput.getAttribute('maxlength')}`;
+});
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     
-    const name = form.querySelector('input[type="text"]').value.trim();
-    const email = form.querySelector('input[type="email"]').value.trim();
-    const message = form.querySelector('textarea').value.trim();
+    const name = form.querySelector('input[name="user_name"]').value.trim();
+    const email = form.querySelector('input[name="user_email"]').value.trim();
+    const phone = form.querySelector('input[name="user_phone"]').value.trim();
+    const message = form.querySelector('textarea[name="message"]').value.trim();
 
-    if (name === "" || email === "" || message === "") {
+    if (name === "" || email === "" || phone === "" || message === "") {
         alert("Please fill in all fields.");
         return;
     }
@@ -24,13 +43,43 @@ form.addEventListener("submit", (e) => {
         return;
     }
 
-    alert("Message sent successfully!");
-    form.reset();
+    if (!validatePhone(phone)) {
+        alert("Please enter a valid phone number.");
+        return;
+    }
+
+    // Replace these with your actual Service ID and Template ID
+    const serviceID = "YOUR_SERVICE_ID";
+    const templateID = "YOUR_TEMPLATE_ID";
+
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.innerText;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+    emailjs.sendForm(serviceID, templateID, form)
+        .then(() => {
+            alert("Message sent successfully!");
+            form.reset();
+        }, (err) => {
+            alert("Failed to send message. Please try again.");
+            console.error("EmailJS Error:", err);
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.innerText = originalText;
+        });
 });
 
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
+}
+
+function validatePhone(phone) {
+    // Allows optional +, spaces, dashes, parentheses, and digits
+    const re = /^[\+]?[\d\s\-\(\)]{10,20}$/;
+    return re.test(phone);
 }
 
 // ===== SKILL BAR ANIMATION =====
@@ -176,4 +225,28 @@ if (slides.length > 0) {
     setInterval(() => {
         showSlide(slideIndex + 1);
     }, 5000);
+}
+
+// ===== SCROLL PROGRESS BAR =====
+window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("myBar").style.width = scrolled + "%";
+});
+
+// ===== TYPEWRITER EFFECT =====
+const typingText = document.querySelector('.typing-text');
+if (typingText) {
+    const text = typingText.textContent;
+    typingText.textContent = '';
+    let i = 0;
+    function typeWriter() {
+        if (i < text.length) {
+            typingText.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 100);
+        }
+    }
+    setTimeout(typeWriter, 500);
 }

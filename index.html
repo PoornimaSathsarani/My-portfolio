@@ -14,6 +14,11 @@
         <div class="spinner"></div>
     </div>
 
+    <!-- Scroll Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
     <nav class="navbar">
         <div class="logo">D.P.S. Wijenayake</div>
         <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
@@ -31,7 +36,8 @@
     <header class="hero">
         <h1 class="typing-text">Biomedical Technology Student</h1>
         <p>Learning Web Application Development</p>
-        <a href="#contact" class="btn-hire">Hire Me</a>
+        <a href="#contact" class="btn">Hire Me</a>
+        <a href="cv.pdf" class="btn" download>Download CV</a>
     </header>
 
     <section id="about" class="container fade-in-section">
@@ -39,7 +45,7 @@
         <div class="about-content">
             <img src="images/unname.jpg" alt="Profile Picture" class="profile-img">
             <p>I am a Biomedical Technology student interested in programming, web development, and healthcare technologies.</p>
-            <a href="cv.pdf" class="btn-download" download>Download CV</a>
+            <a href="cv.pdf" class="btn" download>Download CV</a>
         </div>
 
         <div class="timeline">
@@ -130,9 +136,11 @@
     <section id="contact" class="container">
         <h2 class="section-title">Contact Me</h2>
         <form class="contact-form" id="contactForm">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <input type="text" name="user_name" placeholder="Your Name" required>
+            <input type="email" name="user_email" placeholder="Your Email" required>
+            <input type="tel" name="user_phone" placeholder="Your Phone Number" required>
+            <textarea name="message" placeholder="Your Message" rows="5" maxlength="500" required></textarea>
+            <div id="charCount">0/500</div>
             <button type="submit" class="btn-submit">Send Message</button>
         </form>
     </section>
@@ -152,6 +160,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
