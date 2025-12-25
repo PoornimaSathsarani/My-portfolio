@@ -2,85 +2,88 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>D.P.S. Wijenayake | Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet">
-
-    <!-- CSS -->
+    <title>D.P.S. Wijenayake | Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
-<header>
-    <h1>D.P.S. Wijenayake</h1>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+    <nav class="navbar">
+        <div class="logo">D.P.S. Wijenayake</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button id="themeBtn">🌙</button>
     </nav>
-    <button id="themeBtn">🌙</button>
-</header>
 
-<!-- ===== HERO ===== -->
-<section class="hero">
-    <h2>Biomedical Technology Student</h2>
-    <p>Learning Web Application Development</p>
-</section>
+    <header class="hero">
+        <h1>Biomedical Technology Student</h1>
+        <p>Learning Web Application Development</p>
+    </header>
 
-<!-- ===== ABOUT ===== -->
-<section id="about" class="card">
-    <h2>About Me</h2>
-    <img src="images/two.jpeg" alt="two" class="profile-pic">
-    <p>I am a Biomedical Technology student interested in programming, web development, and healthcare technologies.</p>
-    <a href="cv.pdf" class="btn" download>Download CV</a>
-</section>
-
-<!-- ===== PROJECTS ===== -->
-<section id="projects" class="card">
-    <h2>My Projects</h2>
-    <div id="projectContainer"></div>
-</section>
-
-<!-- ===== SKILLS ===== -->
-<section id="skills" class="card">
-    <h2>My Skills</h2>
-    <div class="skills">
-        <div class="skill">
-            <span class="skill-name">HTML/CSS</span>
-            <div class="skill-bar"><div data-width="90%"></div></div>
+    <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <img src="images/two.jpeg" alt="Profile Picture" class="profile-img">
+            <p>I am a Biomedical Technology student interested in programming, web development, and healthcare technologies.</p>
+            <a href="#" class="btn-download">Download CV</a>
         </div>
-        <div class="skill">
-            <span class="skill-name">JavaScript</span>
-            <div class="skill-bar"><div data-width="75%"></div></div>
+    </section>
+
+    <section id="projects" class="container bg-light">
+        <h2 class="section-title">My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Portfolio Website</h3>
+                <p>Responsive portfolio using HTML, CSS, JS.</p>
+            </div>
+            <div class="project-card">
+                <h3>BMI Calculator</h3>
+                <p>JavaScript based BMI calculator for health tracking.</p>
+            </div>
+            <div class="project-card">
+                <h3>Medical Form</h3>
+                <p>Client-side form validation project for patient data.</p>
+            </div>
         </div>
-        <div class="skill">
-            <span class="skill-name">Python</span>
-            <div class="skill-bar"><div data-width="65%"></div></div>
+    </section>
+
+    <section id="skills" class="container">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skill-bars">
+            <div class="skill">
+                <span>HTML/CSS</span>
+                <div class="bar"><div class="progress" data-width="90%" style="width: 0;"></div></div>
+            </div>
+            <div class="skill">
+                <span>JavaScript</span>
+                <div class="bar"><div class="progress" data-width="75%" style="width: 0;"></div></div>
+            </div>
+            <div class="skill">
+                <span>Python</span>
+                <div class="bar"><div class="progress" data-width="65%" style="width: 0;"></div></div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ===== CONTACT ===== -->
-<section id="contact" class="card">
-    <h2>Contact Me</h2>
-    <form id="contactForm">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <textarea id="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-    </form>
-</section>
+    <section id="contact" class="container bg-light">
+        <h2 class="section-title">Contact Me</h2>
+        <form class="contact-form" id="contactForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+    </section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-    <p>© 2025 D.P.S. Wijenayake</p>
-</footer>
+    <footer>
+        <p>&copy; 2025 D.P.S. Wijenayake. All Rights Reserved.</p>
+    </footer>
 
-<!-- JS -->
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
