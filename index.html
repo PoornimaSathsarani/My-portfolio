@@ -22,11 +22,13 @@
     <nav class="navbar">
         <div class="logo">D.P.S. Wijenayake</div>
         <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
-        <ul class="nav-links">
+        <ul class="nav-links" id="nevLinks">
             <li><a href="#about" class="nav-about">About</a></li>
             <li><a href="#projects" class="nav-projects">Projects</a></li>
             <li><a href="#skills" class="nav-skills">Skills</a></li>
             <li><a href="#services" class="nav-services">Services</a></li>
+            <li><a href="#awards" class="nav-awards">Awards</a></li>
+            <li><a href="#education" class="nav-education">Education</a></li>
             <li><a href="#blog" class="nav-blog">Blog</a></li>
             <li><a href="#contact" class="nav-contact">Contact</a></li>
         </ul>
@@ -40,6 +42,7 @@
         <a href="cv.pdf" class="btn" download>Download CV</a>
     </header>
 
+    <!-- ABOUT -->
     <section id="about" class="container fade-in-section">
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
@@ -60,6 +63,7 @@
         </div>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects" class="container bg-light">
         <h2 class="section-title">My Projects</h2>
         <input type="text" id="projectSearch" placeholder="Search projects...">
@@ -76,39 +80,47 @@
                     </div>
                 </div>
             </div>
+            <div class="project-card">
+                <div class="project-card-inner">
+                    <div class="project-card-front">
+                        <img src="images/project2.jpg" alt="Project 2" class="project-img">
+                        <h3>Health App</h3>
+                    </div>
+                    <div class="project-card-back">
+                        <p>Mobile app for tracking health and vitals.</p>
+                        <button class="btn-details">View Details</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- SKILLS -->
     <section id="skills" class="container">
         <h2 class="section-title">My Skills</h2>
         <div class="skills-grid">
             <div class="skill-circle" data-percentage="90">
                 <div class="outer-circle">
-                    <div class="inner-circle">
-                        <span class="number">0%</span>
-                    </div>
+                    <div class="inner-circle"><span class="number">0%</span></div>
                 </div>
                 <h3>HTML/CSS</h3>
             </div>
             <div class="skill-circle" data-percentage="80">
                 <div class="outer-circle">
-                    <div class="inner-circle">
-                        <span class="number">0%</span>
-                    </div>
+                    <div class="inner-circle"><span class="number">0%</span></div>
                 </div>
                 <h3>JavaScript</h3>
             </div>
             <div class="skill-circle" data-percentage="70">
                 <div class="outer-circle">
-                    <div class="inner-circle">
-                        <span class="number">0%</span>
-                    </div>
+                    <div class="inner-circle"><span class="number">0%</span></div>
                 </div>
                 <h3>Python</h3>
             </div>
         </div>
     </section>
 
+    <!-- SERVICES -->
     <section id="services" class="container bg-light">
         <h2 class="section-title">My Services</h2>
         <div class="services-grid">
@@ -120,6 +132,37 @@
         </div>
     </section>
 
+    <!-- AWARDS -->
+    <section id="awards" class="container">
+        <h2 class="section-title">Awards & Recognition</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2023</div>
+                <div class="timeline-content">
+                    <h3>Best Student Project</h3>
+                    <p>University of Gampaha Wickramarachchi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="container bg-light">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2022 - Present</div>
+                <div class="timeline-content">
+                    <h3>BSc Biomedical Technology</h3>
+                    <p>Gampaha Wickramarachchi University</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
     <section id="testimonials" class="container">
         <h2 class="section-title">Testimonials</h2>
         <div class="testimonial-slider">
@@ -135,6 +178,7 @@
         </div>
     </section>
 
+    <!-- BLOG -->
     <section id="blog" class="container bg-light">
         <h2 class="section-title">Recent Posts</h2>
         <div class="blog-grid">
@@ -151,6 +195,7 @@
         </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="container">
         <h2 class="section-title">Contact Me</h2>
         <form class="contact-form" id="contactForm">
@@ -163,8 +208,14 @@
         </form>
     </section>
 
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2025 D.P.S. Wijenayake. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
     </footer>
 
     <button id="backToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
