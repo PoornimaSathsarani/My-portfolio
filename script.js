@@ -1,17 +1,28 @@
 // ===== DARK MODE =====
-const themeBtn = document.getElementById("themeBtn");
+document.addEventListener("DOMContentLoaded", () => {
+    const themeBtn = document.getElementById("themeBtn");
 
-// Check LocalStorage
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark-mode");
-    themeBtn.textContent = "☀️";
-}
+    if (themeBtn) {
+        // Check LocalStorage
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark-mode");
+            themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        }
 
-themeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    const isDark = document.body.classList.contains("dark-mode");
-    themeBtn.textContent = isDark ? "☀️" : "🌙";
-    localStorage.setItem("theme", isDark ? "dark" : "light");
+        // Add smooth transition after page load to prevent flashing
+        setTimeout(() => {
+            const style = document.createElement('style');
+            style.innerHTML = `body, .navbar, .project-card, .blog-card, input, textarea { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }`;
+            document.head.appendChild(style);
+        }, 100);
+
+        themeBtn.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            const isDark = document.body.classList.contains("dark-mode");
+            themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+    }
 });
 
 // Initialize EmailJS (Replace "YOUR_PUBLIC_KEY" with your actual key)
@@ -374,4 +385,3 @@ document.querySelectorAll('.read-more').forEach(btn => {
         }
     });
 });
-
