@@ -47,6 +47,26 @@ messageInput.addEventListener('input', () => {
     charCount.textContent = `${messageInput.value.length}/${messageInput.getAttribute('maxlength')}`;
 });
 
+// Real-time Validation to disable submit button
+const nameInput = form.querySelector('input[name="user_name"]');
+const emailInput = form.querySelector('input[name="user_email"]');
+const submitBtn = form.querySelector('button[type="submit"]');
+
+const checkInputs = () => {
+    const isValid = nameInput.value.trim() !== "" && 
+                    emailInput.value.trim() !== "" && 
+                    phoneInput.value.trim() !== "" && 
+                    messageInput.value.trim() !== "" && 
+                    validateEmail(emailInput.value.trim()) && 
+                    validatePhone(phoneInput.value.trim());
+    submitBtn.disabled = !isValid;
+};
+
+[nameInput, emailInput, phoneInput, messageInput].forEach(input => {
+    input.addEventListener('input', checkInputs);
+});
+checkInputs(); // Initial check
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     
@@ -55,18 +75,35 @@ form.addEventListener("submit", (e) => {
     const phone = form.querySelector('input[name="user_phone"]').value.trim();
     const message = form.querySelector('textarea[name="message"]').value.trim();
 
+    // Create status message element if it doesn't exist
+    let statusMsg = document.getElementById('statusMsg');
+    if (!statusMsg) {
+        statusMsg = document.createElement('div');
+        statusMsg.id = 'statusMsg';
+        statusMsg.style.marginTop = '15px';
+        statusMsg.style.fontWeight = 'bold';
+        statusMsg.style.textAlign = 'center';
+        form.appendChild(statusMsg);
+    }
+
+    const showStatus = (text, color) => {
+        statusMsg.textContent = text;
+        statusMsg.style.color = color;
+        setTimeout(() => { statusMsg.textContent = ''; }, 5000);
+    };
+
     if (name === "" || email === "" || phone === "" || message === "") {
-        alert("Please fill in all fields.");
+        showStatus("Please fill in all fields.", "red");
         return;
     }
 
     if (!validateEmail(email)) {
-        alert("Please enter a valid email address.");
+        showStatus("Please enter a valid email address.", "red");
         return;
     }
 
     if (!validatePhone(phone)) {
-        alert("Please enter a valid phone number.");
+        showStatus("Please enter a valid phone number.", "red");
         return;
     }
 
@@ -80,7 +117,7 @@ form.addEventListener("submit", (e) => {
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
     if (typeof emailjs === 'undefined') {
-        alert("Email service not loaded. Check internet connection.");
+        showStatus("Email service not loaded. Check internet connection.", "red");
         btn.disabled = false;
         btn.innerText = originalText;
         return;
@@ -88,15 +125,15 @@ form.addEventListener("submit", (e) => {
 
     emailjs.sendForm(serviceID, templateID, form)
         .then(() => {
-            alert("Message sent successfully!");
+            showStatus("Message sent successfully!", "green");
             form.reset();
         }, (err) => {
-            alert("Failed to send message. Please try again.");
+            showStatus("Failed to send message. Please try again.", "red");
             console.error("EmailJS Error:", err);
         })
         .finally(() => {
-            btn.disabled = false;
             btn.innerText = originalText;
+            checkInputs();
         });
 });
 
