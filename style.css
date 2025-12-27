@@ -661,9 +661,14 @@ body.dark .modal-content {
 }
 
 .blog-card img {
-  width: 100%;
-  height: 150px;
+  width: 50%;
+  height: 100px;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-card:hover img {
+  transform: scale(1.1);
 }
 
 .blog-content {
