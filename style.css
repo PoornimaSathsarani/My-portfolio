@@ -204,3 +204,25 @@ border:none;
 border-radius:5px;
 cursor:pointer;
 }
+
+/* Dark Mode & Theme Button */
+#themeBtn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+body.dark-mode {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .project-card,
+body.dark-mode .stat-card,
+body.dark-mode .skill-circle .outer-circle {
+    background: #1e1e1e;
+    color: #fff;
+}

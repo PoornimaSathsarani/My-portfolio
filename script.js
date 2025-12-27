@@ -1,3 +1,17 @@
+// Dark Mode Toggle
+const themeBtn = document.getElementById("themeBtn");
+if (themeBtn) {
+  themeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    const icon = themeBtn.querySelector("i");
+    if (document.body.classList.contains("dark-mode")) {
+      icon.classList.replace("fa-moon", "fa-sun");
+    } else {
+      icon.classList.replace("fa-sun", "fa-moon");
+    }
+  });
+}
+
 // Typing effect
 const text = document.querySelector(".typing-text");
 const original = text.textContent;
