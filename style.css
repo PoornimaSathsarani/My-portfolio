@@ -5,6 +5,11 @@ box-sizing:border-box;
 font-family:'Segoe UI',sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
 body{
 background:#f4f4f9;
 color:#333;
