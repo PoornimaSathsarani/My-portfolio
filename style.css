@@ -54,6 +54,12 @@ border-radius:25px;
 margin:10px;
 text-decoration:none;
 font-weight:bold;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
 .container{
@@ -78,6 +84,11 @@ background:#fff;
 padding:15px;
 border-radius:10px;
 box-shadow:0 4px 8px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.project-card:hover{
+transform:translateY(-10px);
 }
 
 .skills-grid{
@@ -134,6 +145,23 @@ color:#4b0082;
 margin-bottom:10px;
 }
 
+/* Social Links */
+.social-links{
+margin-bottom:20px;
+}
+
+.social-icon{
+font-size:2rem;
+color:#4b0082;
+margin:0 15px;
+transition:0.3s;
+}
+
+.social-icon:hover{
+transform:scale(1.2);
+color:#ff4081;
+}
+
 footer{
 background:#333;
 color:#fff;
@@ -152,4 +180,3 @@ border-radius:50%;
 display:none;
 cursor:pointer;
 }
-
