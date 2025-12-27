@@ -26,6 +26,29 @@ if (typingText) {
   })();
 }
 
+// COURSE PLAN
+const courseData = [
+  { weeks: "Week 1-3", phase: "Foundation + Styling", topics: ["HTML5 and CSS3", "Responsive Design", "Github and Version Control"] },
+  { weeks: "Week 4-6", phase: "Dynamics", topics: ["Client-Side Interactivity with JavaScript", "Validation", "Interaction"] },
+  { weeks: "Week 7-9", phase: "Server-Side", topics: ["Scripting with PHP", "Forms With PHP", "Memory"] },
+  { weeks: "Week 10-13", phase: "Databases with MySQL", topics: ["CRUD Application", "Design Patterns and Frameworks"] },
+  { weeks: "Last 2 Weeks", phase: "Finalization", topics: ["Deployment live to server", "Model Paper", "Final Project Presentations"] }
+];
+
+const courseContainer = document.getElementById("course-timeline");
+if (courseContainer) {
+  courseData.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card fade-in";
+    card.innerHTML = `
+      <h3>${item.weeks}</h3>
+      <h4>${item.phase}</h4>
+      <ul>${item.topics.map(topic => `<li>${topic}</li>`).join("")}</ul>
+    `;
+    courseContainer.appendChild(card);
+  });
+}
+
 // FADE-IN ON SCROLL
 const sections = document.querySelectorAll(".fade-in");
 const reveal = () => {
