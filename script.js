@@ -15,8 +15,11 @@ type();
 
 // Back to top
 const btn = document.getElementById("backToTopBtn");
+const nav = document.querySelector(".navbar");
+
 window.addEventListener("scroll",()=>{
  btn.style.display = window.scrollY > 300 ? "block" : "none";
+ nav.classList.toggle("scrolled", window.scrollY > 50);
 });
 btn.onclick = ()=>window.scrollTo({top:0,behavior:"smooth"});
 

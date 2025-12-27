@@ -14,13 +14,19 @@ color:#333;
 position:fixed;
 top:0;
 width:100%;
-background:#4b0082;
+background:transparent;
+transition:0.3s;
 color:#fff;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px;
 z-index:1000;
+}
+
+.navbar.scrolled{
+background:#4b0082;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 .nav-links{
