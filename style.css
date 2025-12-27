@@ -5,6 +5,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 :root {
   --primary: #0077b6;
   --secondary: #00b4d8;
@@ -65,14 +70,34 @@ body {
   transition: 0.3s;
 }
 
+.nav-links a.active,
 .nav-links a:hover {
   color: var(--primary);
+}
+
+.nav-links .nav-btn {
+  background: var(--primary);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+}
+
+.nav-links .nav-btn:hover {
+  background: var(--secondary);
+  color: white;
 }
 
 #themeBtn {
   background: none;
   border: none;
   font-size: 20px;
+}
+
+.menu-btn {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 20px;
 }
 
 /* GLASS */
@@ -95,6 +120,16 @@ body {
 .hero h1 {
   font-size: 40px;
   margin-bottom: 10px;
+}
+
+.typing-text::after {
+  content: "|";
+  animation: blink 1s step-end infinite;
+  margin-left: 5px;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }
 
 /* BUTTON */
@@ -126,8 +161,8 @@ body {
 /* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
   margin-top: 30px;
 }
 
@@ -159,13 +194,43 @@ body {
   color: var(--primary);
 }
 
-/* SKILLS */
-.skill {
+.card .btn {
+  margin: 0;
+  margin-top: auto;
   background: var(--primary);
   color: white;
-  padding: 15px;
-  border-radius: 20px;
-  font-weight: 500;
+  align-self: flex-start;
+}
+
+.card .btn:hover {
+  background: var(--secondary);
+}
+
+/* SKILLS */
+.skill-box {
+  text-align: left;
+}
+
+.skill-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.skill-bar {
+  height: 10px;
+  background: #ddd;
+  border-radius: 5px;
+}
+
+.skill-per {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 5px;
+  display: block;
+  width: 0;
+  transition: width 1.5s ease-in-out;
 }
 
 /* PROFILE */
@@ -192,12 +257,45 @@ body {
   color: var(--secondary);
 }
 
+footer .socials a {
+  color: white;
+}
+
 /* FOOTER */
 footer {
   background: var(--primary);
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 50px 20px;
+}
+
+footer form {
+  max-width: 600px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+footer input,
+footer textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+footer .btn {
+  align-self: center;
+  cursor: pointer;
+  border: none;
+}
+
+footer .copyright {
+  margin-top: 30px;
+  font-size: 14px;
+  opacity: 0.8;
 }
 
 /* FADE ANIMATION */
@@ -220,7 +318,8 @@ footer {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  display: none;
+  opacity: 0;
+  pointer-events: none;
   background: var(--primary);
   color: white;
   border: none;
@@ -228,8 +327,15 @@ footer {
   border-radius: 50%;
   cursor: pointer;
   font-size: 18px;
+  transition: 0.3s;
+  z-index: 1000;
 }
 
+#backToTopBtn.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-5px);
+}
 /* DARK MODE */
 body.dark {
   background: var(--dark);
@@ -248,4 +354,35 @@ body.dark footer {
 body.dark .card {
   background: #2d2d2d;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+body.dark .skill-bar {
+  background: #444;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    display: none;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  body.dark .nav-links {
+    background: #000;
+  }
 }

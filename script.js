@@ -14,17 +14,32 @@ themeBtn.onclick = () => {
 
 // TYPING EFFECT
 const typingText = document.querySelector(".typing-text");
-if (typingText) {
-  const text = typingText.textContent;
-  typingText.textContent = "";
-  let i = 0;
-  (function type() {
-    if (i < text.length) {
-      typingText.textContent += text.charAt(i++);
-      setTimeout(type, 100);
-    }
-  })();
-}
+const words = ["Biomedical Technology Student", "Web Developer", "Healthcare Enthusiast"];
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+const typeEffect = () => {
+  const currentWord = words[wordIndex];
+  const currentChars = currentWord.substring(0, charIndex);
+  typingText.textContent = currentChars;
+
+  let typeSpeed = isDeleting ? 50 : 100;
+
+  if (!isDeleting && charIndex < currentWord.length) {
+    charIndex++;
+  } else if (isDeleting && charIndex > 0) {
+    charIndex--;
+  } else {
+    isDeleting = !isDeleting;
+    typeSpeed = isDeleting ? 2000 : 500;
+    if (!isDeleting) wordIndex = (wordIndex + 1) % words.length;
+  }
+
+  setTimeout(typeEffect, typeSpeed);
+};
+
+if (typingText) typeEffect();
 
 // FADE-IN ON SCROLL
 const sections = document.querySelectorAll(".fade-in");
@@ -40,6 +55,16 @@ reveal();
 // CONTACT FORM DEMO
 document.getElementById("contactForm").addEventListener("submit", e => {
   e.preventDefault();
+
+  const emailInput = e.target.querySelector('input[type="email"]');
+  const email = emailInput.value.trim();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
   alert("Message sent successfully! (Demo)");
   e.target.reset();
 });
@@ -47,8 +72,65 @@ document.getElementById("contactForm").addEventListener("submit", e => {
 // BACK TO TOP BUTTON
 const backBtn = document.getElementById("backToTopBtn");
 window.addEventListener("scroll", () => {
-  backBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  if (window.scrollY > 300) {
+    backBtn.classList.add("active");
+  } else {
+    backBtn.classList.remove("active");
+  }
 });
 backBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// ACTIVE LINK ON SCROLL
+const navLinks = document.querySelectorAll(".nav-links a");
+const scrollSections = document.querySelectorAll("section, footer");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+  scrollSections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (window.scrollY >= sectionTop - 150) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (current && link.getAttribute("href").includes(current)) {
+      link.classList.add("active");
+    }
+  });
+});
+
+// SKILL BAR ANIMATION
+const skillSection = document.getElementById("skills");
+const progressBars = document.querySelectorAll(".skill-per");
+
+window.addEventListener("scroll", () => {
+  const sectionPos = skillSection.getBoundingClientRect().top;
+  const screenPos = window.innerHeight;
+
+  if (sectionPos < screenPos - 50) {
+    progressBars.forEach(bar => {
+      bar.style.width = bar.dataset.width;
+    });
+  }
+});
+
+// MOBILE MENU TOGGLE
+const menuBtn = document.getElementById("menuBtn");
+const navContainer = document.querySelector(".nav-links");
+
+menuBtn.addEventListener("click", () => {
+  navContainer.classList.toggle("active");
+  menuBtn.innerHTML = navContainer.classList.contains("active") ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+});
+
+// Close menu when clicking a link
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    navContainer.classList.remove("active");
+    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+  });
 });

@@ -24,9 +24,11 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="cv.pdf" class="nav-btn" download>CV <i class="fas fa-download"></i></a></li>
   </ul>
 
   <button id="themeBtn"><i class="fas fa-moon"></i></button>
+  <div class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></div>
 </nav>
 
 <!-- HERO -->
@@ -71,15 +73,47 @@
 <section id="skills" class="section fade-in">
   <h2>Skills</h2>
   <div class="grid">
-    <div class="skill">HTML & CSS</div>
-    <div class="skill">JavaScript</div>
-    <div class="skill">Python</div>
-    <div class="skill">Biomedical Knowledge</div>
+    <div class="skill-box">
+      <div class="skill-title">
+        <h3>HTML & CSS</h3>
+        <span>90%</span>
+      </div>
+      <div class="skill-bar">
+        <span class="skill-per" data-width="90%"></span>
+      </div>
+    </div>
+    <div class="skill-box">
+      <div class="skill-title">
+        <h3>JavaScript</h3>
+        <span>80%</span>
+      </div>
+      <div class="skill-bar">
+        <span class="skill-per" data-width="80%"></span>
+      </div>
+    </div>
+    <div class="skill-box">
+      <div class="skill-title">
+        <h3>Python</h3>
+        <span>75%</span>
+      </div>
+      <div class="skill-bar">
+        <span class="skill-per" data-width="75%"></span>
+      </div>
+    </div>
+    <div class="skill-box">
+      <div class="skill-title">
+        <h3>Biomedical Knowledge</h3>
+        <span>85%</span>
+      </div>
+      <div class="skill-bar">
+        <span class="skill-per" data-width="85%"></span>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section bg fade-in">
+<!-- FOOTER & CONTACT -->
+<footer id="contact" class="fade-in">
   <h2>Contact Me</h2>
   <div class="socials">
     <a href="#"><i class="fab fa-whatsapp"></i></a>
@@ -92,10 +126,8 @@
     <textarea placeholder="Message" rows="4" required></textarea>
     <button class="btn" type="submit">Send</button>
   </form>
-</section>
 
-<footer>
-<p>© 2025 D.P.S. Wijenayake | All Rights Reserved</p>
+  <p class="copyright">© 2025 D.P.S. Wijenayake | All Rights Reserved</p>
 </footer>
 
 <button id="backToTopBtn"><i class="fas fa-arrow-up"></i></button>
@@ -103,4 +135,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
