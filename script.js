@@ -1,35 +1,35 @@
-// Typing effect
-const text = document.querySelector(".typing-text");
-const original = text.textContent;
-text.textContent = "";
-let i = 0;
+// DARK MODE
+const themeBtn = document.getElementById("themeBtn");
 
-function type(){
- if(i < original.length){
-   text.textContent += original.charAt(i);
-   i++;
-   setTimeout(type,100);
- }
-}
-type();
+themeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
 
-// Back to top
-const btn = document.getElementById("backToTopBtn");
-window.addEventListener("scroll",()=>{
- btn.style.display = window.scrollY > 300 ? "block" : "none";
+    // Change icon
+    if (document.body.classList.contains("dark-mode")) {
+        themeBtn.textContent = "☀️";
+    } else {
+        themeBtn.textContent = "🌙";
+    }
 });
-btn.onclick = ()=>window.scrollTo({top:0,behavior:"smooth"});
 
-// Skill animation
-document.querySelectorAll(".skill-circle").forEach(circle=>{
- let percent = circle.dataset.percentage;
- let number = circle.querySelector(".number");
- let count = 0;
- let interval = setInterval(()=>{
-   if(count >= percent) clearInterval(interval);
-   else{
-     count++;
-     number.textContent = count+"%";
-   }
- },20);
+// PROJECT DATA
+const projects = [
+    { title: "Portfolio Website", description: "HTML, CSS, JS based portfolio" },
+    { title: "BMI Calculator", description: "JavaScript BMI calculator" },
+    { title: "Medical Form", description: "Patient data form" }
+];
+
+const container = document.getElementById("projectContainer");
+
+projects.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "project-card";
+    div.innerHTML = `<h3>${p.title}</h3><p>${p.description}</p>`;
+    container.appendChild(div);
+});
+
+// CONTACT FORM
+document.getElementById("contactForm").addEventListener("submit", e => {
+    e.preventDefault();
+    alert("Message Sent!");
 });
