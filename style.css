@@ -34,25 +34,16 @@ padding:8px 12px;
 text-decoration:none;
 }
 
-#themeBtn{
-background:none;
-border:none;
-color:#fff;
-font-size:1.3rem;
-cursor:pointer;
-}
-
 .hero{
 height:100vh;
 background:linear-gradient(rgba(75,0,130,.8),rgba(75,0,130,.8)),url("images/hero-bg.jpg");
 background-size:cover;
-background-position:center;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-text-align:center;
 color:#fff;
+text-align:center;
 }
 
 .btn{
@@ -66,12 +57,8 @@ font-weight:bold;
 }
 
 .container{
-padding:90px 10%;
+padding:80px 10%;
 text-align:center;
-}
-
-.bg-light{
-background:#fff;
 }
 
 .profile-img{
@@ -121,6 +108,7 @@ align-items:center;
 font-weight:bold;
 }
 
+/* 🔥 NEW SECTION STYLE */
 .stats-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -133,6 +121,17 @@ background:#fff;
 padding:25px;
 border-radius:15px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.stat-card:hover{
+transform:translateY(-5px);
+}
+
+.stat-card i{
+font-size:2.5rem;
+color:#4b0082;
+margin-bottom:10px;
 }
 
 footer{
@@ -152,34 +151,5 @@ padding:12px;
 border-radius:50%;
 display:none;
 cursor:pointer;
-}
-
-/* 🌙 DARK MODE */
-body.dark-mode{
-background:#121212;
-color:#e0e0e0;
-}
-
-body.dark-mode .navbar{
-background:#1f1f1f;
-}
-
-body.dark-mode .bg-light,
-body.dark-mode .project-card,
-body.dark-mode .stat-card{
-background:#242424;
-color:#e0e0e0;
-}
-
-body.dark-mode .btn{
-background:#bb86fc;
-color:#000;
-}
-
-body.dark-mode input,
-body.dark-mode textarea{
-background:#2a2a2a;
-color:#fff;
-border:1px solid #555;
 }
 
