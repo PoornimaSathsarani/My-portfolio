@@ -127,6 +127,38 @@ window.addEventListener("scroll", () => {
   }
 });
 
+// SKILLS CHART
+const ctx = document.getElementById('skillsChart');
+if (ctx) {
+  Chart.defaults.font.family = "'Inter', sans-serif";
+  new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: ['HTML/CSS', 'JavaScript', 'Python', 'Biomedical Tech', 'Communication', 'Problem Solving'],
+      datasets: [{
+        label: 'Skill Level',
+        data: [90, 80, 75, 85, 70, 80],
+        backgroundColor: 'rgba(87, 81, 209, 0.2)',
+        borderColor: '#5751d1',
+        pointBackgroundColor: '#5fe28b',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: '#5751d1'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        r: {
+          suggestedMin: 0,
+          suggestedMax: 100
+        }
+      }
+    }
+  });
+}
+
 // MOBILE MENU TOGGLE
 const menuBtn = document.getElementById("menuBtn");
 const navContainer = document.querySelector(".nav-links");
