@@ -111,10 +111,7 @@ body {
 /* HERO */
 .hero {
   height: 90vh;
-  /* Replace 'images/hero-bg.jpg' with your actual image path */
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1920&q=80');
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: white;
   text-align: center;
   padding-top: 120px;
@@ -123,6 +120,12 @@ body {
 .hero h1 {
   font-size: 40px;
   margin-bottom: 10px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .typing-text::after {
