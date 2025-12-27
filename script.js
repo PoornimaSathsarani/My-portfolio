@@ -56,8 +56,13 @@ reveal();
 document.getElementById("contactForm").addEventListener("submit", e => {
   e.preventDefault();
 
+  const nameInput = e.target.querySelector('input[type="text"]');
   const emailInput = e.target.querySelector('input[type="email"]');
+  const msgInput = e.target.querySelector('textarea');
+
+  const name = nameInput.value;
   const email = emailInput.value.trim();
+  const message = msgInput.value;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!emailPattern.test(email)) {
@@ -65,7 +70,11 @@ document.getElementById("contactForm").addEventListener("submit", e => {
     return;
   }
 
-  alert("Message sent successfully! (Demo)");
+  // Open Email Client
+  const subject = `Portfolio Contact from ${name}`;
+  const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
+  window.location.href = `mailto:yourname@example.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
   e.target.reset();
 });
 
