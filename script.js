@@ -1,27 +1,18 @@
-/* Preloader */
+// PRELOADER
 window.addEventListener("load", () => {
   document.getElementById("preloader").style.display = "none";
 });
 
-/* Dark / Light Mode */
+// DARK MODE
 const themeBtn = document.getElementById("themeBtn");
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark");
-  themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
-}
-
-themeBtn.addEventListener("click", () => {
+themeBtn.onclick = () => {
   document.body.classList.toggle("dark");
-  localStorage.setItem(
-    "theme",
-    document.body.classList.contains("dark") ? "dark" : "light"
-  );
   themeBtn.innerHTML = document.body.classList.contains("dark")
     ? '<i class="fas fa-sun"></i>'
     : '<i class="fas fa-moon"></i>';
-});
+};
 
-/* Typing Effect */
+// TYPING EFFECT
 const typingText = document.querySelector(".typing-text");
 if (typingText) {
   const text = typingText.textContent;
@@ -35,19 +26,25 @@ if (typingText) {
   })();
 }
 
-/* Fade In */
-const sections = document.querySelectorAll(".fade-in-section");
+// FADE-IN ON SCROLL
+const sections = document.querySelectorAll(".fade-in");
 const reveal = () => {
   sections.forEach(sec => {
-    if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
-      sec.classList.add("visible");
-    }
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 50) sec.style.animationPlayState = "running";
   });
 };
 window.addEventListener("scroll", reveal);
 reveal();
 
-/* Back to Top */
+// CONTACT FORM DEMO
+document.getElementById("contactForm").addEventListener("submit", e => {
+  e.preventDefault();
+  alert("Message sent successfully! (Demo)");
+  e.target.reset();
+});
+
+// BACK TO TOP BUTTON
 const backBtn = document.getElementById("backToTopBtn");
 window.addEventListener("scroll", () => {
   backBtn.style.display = window.scrollY > 300 ? "block" : "none";
@@ -56,8 +53,3 @@ backBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-/* Contact Form Demo */
-document.getElementById("contactForm").addEventListener("submit", e => {
-  e.preventDefault();
-  alert("Message sent successfully! (Demo)");
-});
