@@ -91,7 +91,12 @@ body {
   background: none;
   border: none;
   font-size: 20px;
-  color: white;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+#themeBtn:hover {
+  color: var(--secondary);
 }
 
 .menu-btn {
