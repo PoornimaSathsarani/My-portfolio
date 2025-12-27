@@ -187,6 +187,9 @@
 <!-- BLOG -->
 <section id="blog" class="section bg fade-in">
   <h2>Latest Blog Posts</h2>
+  <div class="search-container">
+    <input type="search" id="blogSearch" placeholder="Search posts by title or content...">
+  </div>
   <div class="grid">
     <div class="blog-card">
       <img src="images/blog1.jpg" alt="Blog 1">
@@ -206,6 +209,16 @@
         <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
+  </div>
+  <div class="pagination" id="blogPagination"></div>
+
+  <div class="newsletter">
+    <h3>Subscribe to my Newsletter</h3>
+    <p>Get the latest updates and articles directly in your inbox.</p>
+    <form id="newsletterForm">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit" class="btn">Subscribe</button>
+    </form>
   </div>
 </section>
 

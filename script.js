@@ -174,6 +174,33 @@ if (slider && slides.length > 0) {
   setInterval(nextSlide, 5000);
 }
 
+// BLOG SEARCH FILTER
+const blogSearchInput = document.getElementById("blogSearch");
+const allBlogCards = document.querySelectorAll("#blog .blog-card");
+
+if (blogSearchInput) {
+  blogSearchInput.addEventListener("input", (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    const pagination = document.getElementById("blogPagination");
+
+    if (pagination) {
+      pagination.style.display = searchTerm ? "none" : "flex";
+    }
+
+    if (!searchTerm && typeof displayBlogPosts === "function") {
+      displayBlogPosts(currentPage);
+      return;
+    }
+
+    allBlogCards.forEach(card => {
+      const title = card.querySelector("h3").textContent.toLowerCase();
+      const excerpt = card.querySelector("p").textContent.toLowerCase();
+      
+      card.style.display = (title.includes(searchTerm) || excerpt.includes(searchTerm)) ? "block" : "none";
+    });
+  });
+}
+
 // PROJECT MODAL
 const modal = document.getElementById("projectModal");
 const modalTitle = document.getElementById("modalTitle");
@@ -214,3 +241,65 @@ window.addEventListener("click", (e) => {
     modal.classList.remove("active");
   }
 });
+
+// BLOG PAGINATION
+const blogPagination = document.getElementById("blogPagination");
+let currentPage = 1;
+const itemsPerPage = 1; // Set to 1 to see pagination with 2 items
+
+const displayBlogPosts = (page) => {
+  const start = (page - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const blogCards = document.querySelectorAll("#blog .blog-card");
+
+  blogCards.forEach((card, index) => {
+    if (index >= start && index < end) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+};
+
+const setupPagination = () => {
+  const blogCards = document.querySelectorAll("#blog .blog-card");
+  const pageCount = Math.ceil(blogCards.length / itemsPerPage);
+  
+  if (blogPagination) {
+    blogPagination.innerHTML = "";
+    for (let i = 1; i <= pageCount; i++) {
+      const btn = document.createElement("button");
+      btn.innerText = i;
+      btn.classList.add("page-btn");
+      if (i === currentPage) btn.classList.add("active");
+
+      btn.addEventListener("click", () => {
+        currentPage = i;
+        displayBlogPosts(currentPage);
+        
+        document.querySelectorAll(".page-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+
+      blogPagination.appendChild(btn);
+    }
+  }
+};
+
+if (document.querySelector("#blog .blog-card")) {
+  displayBlogPosts(currentPage);
+  setupPagination();
+}
+
+// NEWSLETTER SUBSCRIPTION
+const newsletterForm = document.getElementById("newsletterForm");
+if (newsletterForm) {
+  newsletterForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = e.target.querySelector('input[type="email"]').value;
+    if (email) {
+      alert(`Thank you for subscribing with ${email}!`);
+      e.target.reset();
+    }
+  });
+}
