@@ -186,3 +186,21 @@ border-radius:50%;
 display:none;
 cursor:pointer;
 }
+
+/* Form Styles */
+form input, form textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+form button{
+padding:10px 20px;
+background:#4b0082;
+color:#fff;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}

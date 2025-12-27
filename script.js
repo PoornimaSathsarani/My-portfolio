@@ -36,3 +36,20 @@ document.querySelectorAll(".skill-circle").forEach(circle=>{
    }
  },20);
 });
+
+// Contact Form Validation
+const contactForm = document.getElementById("contactForm");
+if(contactForm){
+  contactForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    const email = this.querySelector('input[type="email"]').value;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!emailPattern.test(email)){
+      alert("Please enter a valid email address.");
+      return;
+    }
+    alert("Message Sent Successfully!");
+    this.reset();
+  });
+}
