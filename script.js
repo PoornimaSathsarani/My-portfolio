@@ -10,8 +10,6 @@ themeBtn.onclick = () => {
   themeBtn.innerHTML = document.body.classList.contains("dark")
     ? '<i class="fas fa-sun"></i>'
     : '<i class="fas fa-moon"></i>';
-
-  if (typeof updateChartColors === 'function') updateChartColors();
 };
 
 // TYPING EFFECT
@@ -128,53 +126,6 @@ window.addEventListener("scroll", () => {
     });
   }
 });
-
-// SKILLS CHART
-const ctx = document.getElementById('skillsChart');
-let skillsChart;
-
-function updateChartColors() {
-  if (!skillsChart) return;
-  const isDark = document.body.classList.contains('dark');
-  const textColor = isDark ? '#f4f4f4' : '#666';
-  const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-
-  skillsChart.options.scales.r.grid.color = gridColor;
-  skillsChart.options.scales.r.angleLines.color = gridColor;
-  skillsChart.options.scales.r.pointLabels.color = textColor;
-  skillsChart.options.scales.r.ticks.backdropColor = isDark ? 'transparent' : 'rgba(255, 255, 255, 0.75)';
-  skillsChart.update();
-}
-
-if (ctx) {
-  Chart.defaults.font.family = "'Inter', sans-serif";
-  skillsChart = new Chart(ctx, {
-    type: 'radar',
-    data: {
-      labels: ['HTML/CSS', 'JavaScript', 'Python', 'Biomedical Tech', 'Communication', 'Problem Solving'],
-      datasets: [{
-        label: 'Skill Level',
-        data: [90, 80, 75, 85, 70, 80],
-        backgroundColor: 'rgba(87, 81, 209, 0.2)',
-        borderColor: '#5751d1',
-        pointBackgroundColor: '#5fe28b',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: '#5751d1'
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        r: {
-          suggestedMin: 0,
-          suggestedMax: 100
-        }
-      }
-    }
-  });
-}
 
 // MOBILE MENU TOGGLE
 const menuBtn = document.getElementById("menuBtn");
@@ -350,29 +301,5 @@ if (newsletterForm) {
       alert(`Thank you for subscribing with ${email}!`);
       e.target.reset();
     }
-  });
-}
-
-// PARTICLES BACKGROUND
-if (document.getElementById("particles-js")) {
-  particlesJS("particles-js", {
-    "particles": {
-      "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-      "color": { "value": "#ffffff" },
-      "shape": { "type": "circle" },
-      "opacity": { "value": 0.5, "random": false },
-      "size": { "value": 3, "random": true },
-      "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-      "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": { "enable": true, "mode": "repulse" },
-        "onclick": { "enable": true, "mode": "push" },
-        "resize": true
-      }
-    },
-    "retina_detect": true
   });
 }
