@@ -10,6 +10,8 @@ themeBtn.onclick = () => {
   themeBtn.innerHTML = document.body.classList.contains("dark")
     ? '<i class="fas fa-sun"></i>'
     : '<i class="fas fa-moon"></i>';
+
+  if (typeof updateChartColors === 'function') updateChartColors();
 };
 
 // TYPING EFFECT
@@ -129,9 +131,24 @@ window.addEventListener("scroll", () => {
 
 // SKILLS CHART
 const ctx = document.getElementById('skillsChart');
+let skillsChart;
+
+function updateChartColors() {
+  if (!skillsChart) return;
+  const isDark = document.body.classList.contains('dark');
+  const textColor = isDark ? '#f4f4f4' : '#666';
+  const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+
+  skillsChart.options.scales.r.grid.color = gridColor;
+  skillsChart.options.scales.r.angleLines.color = gridColor;
+  skillsChart.options.scales.r.pointLabels.color = textColor;
+  skillsChart.options.scales.r.ticks.backdropColor = isDark ? 'transparent' : 'rgba(255, 255, 255, 0.75)';
+  skillsChart.update();
+}
+
 if (ctx) {
   Chart.defaults.font.family = "'Inter', sans-serif";
-  new Chart(ctx, {
+  skillsChart = new Chart(ctx, {
     type: 'radar',
     data: {
       labels: ['HTML/CSS', 'JavaScript', 'Python', 'Biomedical Tech', 'Communication', 'Problem Solving'],
