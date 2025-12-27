@@ -5,6 +5,10 @@
   font-family: 'Poppins', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --primary: #0077b6;
   --secondary: #00b4d8;
@@ -123,6 +127,27 @@ body {
   background: #eaf6ff;
 }
 
+/* FILTER BUTTONS */
+.filter-buttons {
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  margin: 5px;
+  border: 2px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
 /* GRID */
 .grid {
   display: grid;
@@ -136,6 +161,10 @@ body {
   padding: 20px;
   border-radius: 15px;
   transition: 0.3s;
+}
+
+.card.hide {
+  display: none;
 }
 
 .card:hover {
@@ -189,6 +218,7 @@ footer {
   transform: translateY(30px);
   animation: fade 1s forwards;
   animation-delay: 0.3s;
+  animation-play-state: paused;
 }
 
 @keyframes fade {
@@ -227,5 +257,3 @@ body.dark .navbar,
 body.dark footer {
   background: #000;
 }
-
-

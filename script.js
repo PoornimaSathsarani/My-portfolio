@@ -53,3 +53,24 @@ backBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+// PROJECT FILTER
+const filterBtns = document.querySelectorAll(".filter-btn");
+const projectCards = document.querySelectorAll(".card");
+
+filterBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    // Remove active class from all buttons
+    document.querySelector(".filter-btn.active").classList.remove("active");
+    btn.classList.add("active");
+
+    const filterValue = btn.getAttribute("data-filter");
+
+    projectCards.forEach(card => {
+      if (filterValue === "all" || card.getAttribute("data-category") === filterValue) {
+        card.classList.remove("hide");
+      } else {
+        card.classList.add("hide");
+      }
+    });
+  });
+});
