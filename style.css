@@ -1,273 +1,140 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+body {
+  background: #ffffff;
+  color: #333;
+  transition: 0.3s;
 }
 
-body{
-background:#f4f4f9;
-color:#333;
+body.dark {
+  background: #121212;
+  color: #f4f4f4;
 }
 
-.navbar{
-position:fixed;
-top:0;
-width:100%;
-background:transparent;
-transition:0.3s;
-color:#fff;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px;
-z-index:1000;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: #005f73;
+  color: #fff;
 }
 
-.navbar.scrolled{
-background:#4b0082;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
 }
 
-.nav-links{
-display:flex;
-list-style:none;
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
 }
 
-.nav-links a{
-color:#fff;
-padding:8px 12px;
-text-decoration:none;
-}
-
-/* Mobile Menu */
-.menu-toggle {
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #4b0082;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px 0;
-        display: none;
-    }
-    .nav-links.active {
-        display: flex;
-    }
-    .nav-links li {
-        margin: 15px 0;
-    }
-}
-
-.hero{
-height:100vh;
-background:linear-gradient(rgba(75,0,130,.8),rgba(75,0,130,.8)),url("images/hero-bg.jpg");
-background-size:cover;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-color:#fff;
-text-align:center;
-}
-
-.btn{
-padding:10px 25px;
-background:#fff;
-color:#4b0082;
-border-radius:25px;
-margin:10px;
-text-decoration:none;
-font-weight:bold;
-transition:0.3s;
-}
-
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-.container{
-padding:80px 10%;
-text-align:center;
-}
-
-.profile-img{
-width:180px;
-border-radius:50%;
-margin:20px 0;
-}
-
-.project-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.project-card{
-background:#fff;
-padding:15px;
-border-radius:10px;
-box-shadow:0 4px 8px rgba(0,0,0,0.1);
-opacity: 0;
-transform: translateY(30px);
-transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s;
-}
-
-.project-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.project-card.visible:hover {
-    transform: translateY(-10px);
-    transition: transform 0.3s ease;
-}
-
-.skills-grid{
-display:flex;
-justify-content:center;
-gap:30px;
-flex-wrap:wrap;
-}
-
-.outer-circle{
-width:120px;
-height:120px;
-border-radius:50%;
-background:#ddd;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.inner-circle{
-width:90px;
-height:90px;
-border-radius:50%;
-background:#f3e5f5;
-display:flex;
-justify-content:center;
-align-items:center;
-font-weight:bold;
-}
-
-/* 🔥 NEW SECTION STYLE */
-.stats-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-margin-top:30px;
-}
-
-.stat-card{
-background:#fff;
-padding:25px;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
-}
-
-.stat-card:hover{
-transform:translateY(-5px);
-}
-
-.stat-card i{
-font-size:2.5rem;
-color:#4b0082;
-margin-bottom:10px;
-}
-
-/* Social Links */
-.social-links{
-margin-bottom:20px;
-}
-
-.social-icon{
-font-size:2rem;
-color:#4b0082;
-margin:0 15px;
-transition:0.3s;
-}
-
-.social-icon:hover{
-transform:scale(1.2);
-color:#ff4081;
-}
-
-footer{
-background:#333;
-color:#fff;
-padding:20px;
-}
-
-#backToTopBtn{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#4b0082;
-color:#fff;
-border:none;
-padding:12px;
-border-radius:50%;
-display:none;
-cursor:pointer;
-}
-
-/* Form Styles */
-form input, form textarea{
-width:100%;
-padding:10px;
-margin:10px 0;
-border:1px solid #ccc;
-border-radius:5px;
-}
-
-form button{
-padding:10px 20px;
-background:#4b0082;
-color:#fff;
-border:none;
-border-radius:5px;
-cursor:pointer;
-}
-
-/* Dark Mode & Theme Button */
 #themeBtn {
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin-left: 15px;
-    position: relative;
-    z-index: 1001;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
 }
 
-body.dark-mode {
-    background: #121212;
-    color: #e0e0e0;
+.hero {
+  padding: 80px 20px;
+  text-align: center;
+  background: #e0fbfc;
 }
 
-body.dark-mode .project-card,
-body.dark-mode .stat-card,
-body.dark-mode .skill-circle .outer-circle {
-    background: #1e1e1e;
-    color: #fff;
+body.dark .hero {
+  background: #1e1e1e;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #005f73;
+  color: #fff;
+  text-decoration: none;
+}
+
+.container {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.bg-light {
+  background: #f4f4f4;
+}
+
+body.dark .bg-light {
+  background: #1e1e1e;
+}
+
+.profile-img {
+  width: 150px;
+  border-radius: 50%;
+  display: block;
+  margin: 20px auto;
+}
+
+.project-card {
+  background: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+body.dark .project-card {
+  background: #2a2a2a;
+}
+
+.skills li {
+  margin: 8px 0;
+}
+
+.social-links a {
+  font-size: 24px;
+  margin: 10px;
+  color: #005f73;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #005f73;
+  color: white;
+}
+
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ccc;
+  border-top: 4px solid #005f73;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
 }
