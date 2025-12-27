@@ -143,3 +143,74 @@ navLinks.forEach(link => {
     menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
   });
 });
+
+// TESTIMONIAL SLIDER
+const slider = document.querySelector(".slider");
+const slides = document.querySelectorAll(".slide");
+const prevBtn = document.querySelector(".prev-btn");
+const nextBtn = document.querySelector(".next-btn");
+
+if (slider && slides.length > 0) {
+  let currentSlide = 0;
+
+  const updateSlider = () => {
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+  };
+
+  const nextSlide = () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlider();
+  };
+
+  const prevSlide = () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateSlider();
+  };
+
+  if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+  if (prevBtn) prevBtn.addEventListener("click", prevSlide);
+
+  // Auto slide every 5 seconds
+  setInterval(nextSlide, 5000);
+}
+
+// PROJECT MODAL
+const modal = document.getElementById("projectModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDesc");
+const modalGallery = document.getElementById("modalGallery");
+const closeBtn = document.querySelector(".close-modal");
+const projectBtns = document.querySelectorAll(".project-btn");
+
+projectBtns.forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    const card = e.target.closest(".card");
+    const title = card.getAttribute("data-title");
+    const desc = card.getAttribute("data-desc");
+    const images = card.getAttribute("data-images");
+    
+    modalTitle.textContent = title;
+    modalDesc.textContent = desc;
+
+    modalGallery.innerHTML = "";
+    if (images) {
+      images.split(",").forEach(imgSrc => {
+        const img = document.createElement("img");
+        img.src = imgSrc.trim();
+        modalGallery.appendChild(img);
+      });
+    }
+
+    modal.classList.add("active");
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.classList.remove("active");
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.remove("active");
+  }
+});
