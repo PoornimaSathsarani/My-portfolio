@@ -11,15 +11,15 @@ html {
 }
 
 :root {
-  --primary: #140e79;
-  --secondary: #0ddb52;
-  --light: #ebd517;
-  --dark: #083144;
+  --primary: #5751d1;
+  --secondary: #5fe28b;
+  --light: #c4bd83;
+  --dark: #55a4c9;
 }
 
 body {
   background: var(--light);
-  color: #333;
+  color: #cc8b8b;
   transition: 0.3s;
 }
 
@@ -66,7 +66,7 @@ body {
 .nav-links a {
   text-decoration: none;
   color: #ece7e7;
-  font-weight: 500;
+  font-weight: 750;
   transition: 0.3s;
 }
 
@@ -102,10 +102,10 @@ body {
 
 /* GLASS */
 .glass {
-  background: rgba(255,255,255,0.25);
+  background: rgba(77, 69, 69, 0.25);
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(116, 99, 99, 0.1);
 }
 
 /* HERO */
@@ -161,7 +161,7 @@ body {
 }
 
 .section.bg {
-  background: #eaf6ff;
+  background: #4e7da1;
 }
 
 /* GRID */
