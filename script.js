@@ -1,44 +1,54 @@
-document.addEventListener("DOMContentLoaded", () => {
-// DARK MODE
-    const themeBtn = document.getElementById("themeBtn");
+// ===== TYPING EFFECT =====
+const typingText = document.querySelector(".typing-text");
+const text = typingText.textContent;
+typingText.textContent = "";
+let i = 0;
 
-    if (themeBtn) {
-        themeBtn.addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
+function type(){
+ if(i < text.length){
+  typingText.textContent += text.charAt(i);
+  i++;
+  setTimeout(type,100);
+ }
+}
+type();
 
-            // Change icon
-            if (document.body.classList.contains("dark-mode")) {
-                themeBtn.textContent = "☀️";
-            } else {
-                themeBtn.textContent = "🌙";
-            }
-        });
-    }
+// ===== BACK TO TOP =====
+const backBtn = document.getElementById("backToTopBtn");
+window.addEventListener("scroll",()=>{
+ backBtn.style.display = window.scrollY > 300 ? "block" : "none";
+});
+backBtn.onclick = ()=>window.scrollTo({top:0,behavior:"smooth"});
 
-// PROJECT DATA
-    const projects = [
-        { title: "Portfolio Website", description: "HTML, CSS, JS based portfolio" },
-        { title: "BMI Calculator", description: "JavaScript BMI calculator" },
-        { title: "Medical Form", description: "Patient data form" }
-    ];
+// ===== SKILL ANIMATION =====
+document.querySelectorAll(".skill-circle").forEach(circle=>{
+ let percent = circle.dataset.percentage;
+ let number = circle.querySelector(".number");
+ let count = 0;
+ let interval = setInterval(()=>{
+  if(count >= percent) clearInterval(interval);
+  else{
+   count++;
+   number.textContent = count+"%";
+  }
+ },20);
+});
 
-    const container = document.getElementById("projectContainer");
+// ===== DARK MODE =====
+document.addEventListener("DOMContentLoaded",()=>{
+ const themeBtn = document.getElementById("themeBtn");
 
-    if (container) {
-        projects.forEach(p => {
-            const div = document.createElement("div");
-            div.className = "project-card";
-            div.innerHTML = `<h3>${p.title}</h3><p>${p.description}</p>`;
-            container.appendChild(div);
-        });
-    }
+ if(localStorage.getItem("theme")==="dark"){
+  document.body.classList.add("dark-mode");
+  themeBtn.innerHTML='<i class="fas fa-sun"></i>';
+ }
 
-// CONTACT FORM
-    const contactForm = document.getElementById("contactForm");
-    if (contactForm) {
-        contactForm.addEventListener("submit", e => {
-            e.preventDefault();
-            alert("Message Sent!");
-        });
-    }
+ themeBtn.addEventListener("click",()=>{
+  document.body.classList.toggle("dark-mode");
+  const isDark = document.body.classList.contains("dark-mode");
+  themeBtn.innerHTML = isDark
+   ? '<i class="fas fa-sun"></i>'
+   : '<i class="fas fa-moon"></i>';
+  localStorage.setItem("theme",isDark?"dark":"light");
+ });
 });
