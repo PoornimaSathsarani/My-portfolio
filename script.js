@@ -189,31 +189,35 @@ if (blogSearchInput) {
 }
 
 // ===================== PROJECT MODAL =====================
+const projectBtns = document.querySelectorAll(".project-btn");
 const modal = document.getElementById("projectModal");
 const modalTitle = document.getElementById("modalTitle");
 const modalDesc = document.getElementById("modalDesc");
 const modalGallery = document.getElementById("modalGallery");
 const closeBtn = document.querySelector(".close-modal");
-const projectBtns = document.querySelectorAll(".project-btn");
 
 projectBtns.forEach(btn => {
-  btn.addEventListener("click", e => {
-    const card = e.target.closest(".card");
-    modalTitle.textContent = card.getAttribute("data-title");
-    modalDesc.textContent = card.getAttribute("data-desc");
+  btn.onclick = () => {
+    const card = btn.parentElement;
+    modalTitle.innerText = card.dataset.title;
+    modalDesc.innerText = card.dataset.desc;
+
     modalGallery.innerHTML = "";
-    const imgs = card.getAttribute("data-images");
-    if (imgs) imgs.split(",").forEach(src => {
+    const images = card.dataset.images.split(",");
+
+    images.forEach(src => {
       const img = document.createElement("img");
       img.src = src.trim();
       modalGallery.appendChild(img);
     });
-    modal.classList.add("active");
-  });
+
+    modal.style.display = "flex";
+  };
 });
 
-closeBtn && closeBtn.addEventListener("click", () => modal.classList.remove("active"));
-window.addEventListener("click", e => { if (e.target === modal) modal.classList.remove("active"); });
+closeBtn.onclick = () => {
+  modal.style.display = "none";
+};
 
 // ===================== NEWSLETTER =====================
 const newsletterForm = document.getElementById("newsletterForm");
@@ -229,8 +233,7 @@ if (newsletterForm) {
 // ===================== HERO BACKGROUND SLIDER =====================
 const heroSection = document.querySelector(".hero");
 const heroImages = [
-  "images/unnamed.jpg",
-  "images/background 01.jpeg",
+    "images/background 01.jpeg",
   "images/background 02.jpeg",
   "images/background 03.jpeg"
  ];
