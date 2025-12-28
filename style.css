@@ -378,6 +378,8 @@ body {
 /* PROFILE */
 .profile-img {
   width: 150px;
+  height: 150px;
+  object-fit: cover;
   border-radius: 50%;
   margin: 20px 0;
   transition: transform 0.4s;
