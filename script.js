@@ -229,10 +229,10 @@ if (newsletterForm) {
 // ===================== HERO BACKGROUND SLIDER =====================
 const heroSection = document.querySelector(".hero");
 const heroImages = [
+  "images/unnamed.jpg",
   "images/background 01.jpeg",
   "images/background 02.jpeg",
-  "images/background 03.jpeg",
-  "images/unnamed.jpg"
+  "images/background 03.jpeg"
  ];
 let heroIndex = 0;
 
@@ -240,5 +240,5 @@ if (heroSection) {
   setInterval(() => {
     heroIndex = (heroIndex + 1) % heroImages.length;
     heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${heroImages[heroIndex]}')`;
-  }, 5000);
+  }, 3000);
 }
