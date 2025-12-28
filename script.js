@@ -240,5 +240,5 @@ if (heroSection) {
   setInterval(() => {
     heroIndex = (heroIndex + 1) % heroImages.length;
     heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${heroImages[heroIndex]}')`;
-  }, 3000);
+  }, 5000);
 }
