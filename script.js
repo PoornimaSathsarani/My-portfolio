@@ -236,7 +236,12 @@ if (newsletterForm) {
   newsletterForm.addEventListener("submit", e => {
     e.preventDefault();
     const email = e.target.querySelector('input[type="email"]').value;
-    if (email) alert(`Thank you for subscribing with ${email}!`);
+    
+    // Open email client to send subscription request
+    const subject = "Newsletter Subscription";
+    const body = `Please add ${email} to your newsletter list.`;
+    window.location.href = `mailto:poornimasathsarani62@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    
     e.target.reset();
   });
 }
