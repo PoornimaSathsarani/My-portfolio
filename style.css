@@ -124,6 +124,7 @@ body {
   color: white;
   text-align: center;
   padding-top: 120px;
+  transition: background-image 1s ease-in-out;
 }
 
 #particles-js {
