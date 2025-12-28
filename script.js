@@ -229,9 +229,10 @@ if (newsletterForm) {
 // ===================== HERO BACKGROUND SLIDER =====================
 const heroSection = document.querySelector(".hero");
 const heroImages = [
-  "background 01.jpeg",
-  "background 02.jpeg",
-  "background 03.jpeg"
+  "images/background 01.jpeg",
+  "images/background 02.jpeg",
+  "images/background 03.jpeg",
+  "images/unnamed.jpg"
  ];
 let heroIndex = 0;
 
