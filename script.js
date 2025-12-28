@@ -238,7 +238,11 @@ let heroIndex = 0;
 
 if (heroSection) {
   setInterval(() => {
-    heroIndex = Math.floor(Math.random() * heroImages.length);
+    let newIndex;
+    do {
+      newIndex = Math.floor(Math.random() * heroImages.length);
+    } while (newIndex === heroIndex);
+    heroIndex = newIndex;
     heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${heroImages[heroIndex]}')`;
   }, 3000);
 }
