@@ -17,15 +17,16 @@ if (themeBtn) {
 
 // ===================== TYPING EFFECT =====================
 const typingText = document.querySelector(".typing-text");
-const words = ["Biomedical Technology Student", "Web Developer", "Healthcare Enthusiast"];
+const words = ["Biomedical Technologist", "Web Developer", "Healthcare Enthusiast"];
 let wordIndex = 0, charIndex = 0, isDeleting = false;
 
-const typeEffect = () => {
-  if (!typingText) return;
+const typeEffect = () => { 
   const currentWord = words[wordIndex];
-  typingText.textContent = currentWord.substring(0, charIndex);
+  const currentChars = currentWord.substring(0, charIndex);
+  typingText.textContent = currentChars;
 
-  let typeSpeed = isDeleting ? 50 : 100;
+  let typeSpeed = isDeleting ? 40 : 100;// Deleting faster, typing slightly faster
+
 
   if (!isDeleting && charIndex < currentWord.length) {
     charIndex++;
