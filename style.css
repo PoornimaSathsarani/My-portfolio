@@ -381,7 +381,8 @@ body {
   height: 250px;
   object-fit: cover;
   border-radius: 50%;
-  margin: 20px 0;
+  display: block;
+  margin: 20px auto;
   transition: transform 0.4s;
 }
 
