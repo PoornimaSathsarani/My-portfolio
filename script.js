@@ -236,6 +236,7 @@ if (newsletterForm) {
   newsletterForm.addEventListener("submit", e => {
     e.preventDefault();
     const email = e.target.querySelector('input[type="email"]').value;
+    if (email) alert(`Thank you for subscribing with ${email}!`);
     
     // Open email client to send subscription request
     const subject = "Newsletter Subscription";
