@@ -159,6 +159,17 @@ body {
   }
 }
 
+.hero-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
 .hero h1 {
   font-size: 40px;
   margin-bottom: 10px;

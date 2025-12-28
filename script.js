@@ -229,9 +229,9 @@ if (newsletterForm) {
 // ===================== HERO BACKGROUND SLIDER =====================
 const heroSection = document.querySelector(".hero");
 const heroImages = [
-  "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80",
+  "background 01.jpeg",
+  "background 02.jpeg",
+  "background 03.jpeg"
  ];
 let heroIndex = 0;
 
