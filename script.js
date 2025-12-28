@@ -196,28 +196,39 @@ const modalDesc = document.getElementById("modalDesc");
 const modalGallery = document.getElementById("modalGallery");
 const closeBtn = document.querySelector(".close-modal");
 
-projectBtns.forEach(btn => {
-  btn.onclick = () => {
-    const card = btn.parentElement;
-    modalTitle.innerText = card.dataset.title;
-    modalDesc.innerText = card.dataset.desc;
+if (modal && closeBtn) {
+  projectBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".card");
+      if (!card) return;
 
-    modalGallery.innerHTML = "";
-    const images = card.dataset.images.split(",");
+      modalTitle.innerText = card.dataset.title || "Project Details";
+      modalDesc.innerText = card.dataset.desc || "";
 
-    images.forEach(src => {
-      const img = document.createElement("img");
-      img.src = src.trim();
-      modalGallery.appendChild(img);
+      modalGallery.innerHTML = "";
+      if (card.dataset.images) {
+        const images = card.dataset.images.split(",");
+        images.forEach(src => {
+          const img = document.createElement("img");
+          img.src = src.trim();
+          modalGallery.appendChild(img);
+        });
+      }
+
+      modal.style.display = "flex";
     });
+  });
 
-    modal.style.display = "flex";
-  };
-});
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
 
-closeBtn.onclick = () => {
-  modal.style.display = "none";
-};
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+}
 
 // ===================== NEWSLETTER =====================
 const newsletterForm = document.getElementById("newsletterForm");
