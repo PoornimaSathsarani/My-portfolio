@@ -236,14 +236,30 @@ if (newsletterForm) {
   newsletterForm.addEventListener("submit", e => {
     e.preventDefault();
     const email = e.target.querySelector('input[type="email"]').value;
-    if (email) alert(`Thank you! Your email app will now open. Please send the email to complete your subscription.`);
     
-    // Open email client to send subscription request
-    const subject = "Newsletter Subscription";
-    const body = `Please add ${email} to your newsletter list.`;
-    window.location.href = `mailto:poornimasathsarani62@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-    
-    e.target.reset();
+    // --- INSTRUCTION ---
+    // To get real emails, register at https://formspree.io/ and create a new form.
+    // Replace "YOUR_FORMSPREE_ID" below with the ID they give you (e.g., "xwqbjqrz").
+    const formspreeId = "YOUR_FORMSPREE_ID"; 
+
+    if (formspreeId !== "YOUR_FORMSPREE_ID") {
+      // Use Formspree service
+      fetch(`https://formspree.io/f/${formspreeId}`, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(e.target)
+      }).then(response => {
+        if (response.ok) { alert("Thanks for subscribing!"); e.target.reset(); }
+        else { alert("Oops! There was a problem submitting your form."); }
+      });
+    } else {
+      // Fallback to Mailto (Current behavior)
+      if (email) alert(`Thank you! Your email app will now open. Please send the email to complete your subscription.`);
+      const subject = "Newsletter Subscription";
+      const body = `Please add ${email} to your newsletter list.`;
+      window.location.href = `mailto:poornimasathsarani62@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+      e.target.reset();
+    }
   });
 }
 
