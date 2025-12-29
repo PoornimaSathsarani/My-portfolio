@@ -266,16 +266,45 @@ if (heroSection) {
 // ===================== FOLLOW BUTTON =====================
 const followBtn = document.getElementById("followBtn");
 if (followBtn) {
+  if (localStorage.getItem("isFollowing") === "true") {
+    followBtn.innerText = "Following";
+    followBtn.style.backgroundColor = "#5fe28b";
+    followBtn.style.color = "white";
+  }
+
   followBtn.addEventListener("click", () => {
     if (followBtn.innerText === "Follow Website") {
       followBtn.innerText = "Following";
       followBtn.style.backgroundColor = "#5fe28b";
       followBtn.style.color = "white";
+      localStorage.setItem("isFollowing", "true");
       alert("Thank you for following! You will receive notifications.");
     } else {
       followBtn.innerText = "Follow Website";
       followBtn.style.backgroundColor = "";
       followBtn.style.color = "";
+      localStorage.removeItem("isFollowing");
+    }
+  });
+}
+
+// ===================== SHARE BUTTON =====================
+const shareBtn = document.getElementById("shareBtn");
+if (shareBtn) {
+  shareBtn.addEventListener("click", async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: document.title,
+          text: "Check out this portfolio!",
+          url: window.location.href,
+        });
+      } catch (err) {
+        // User cancelled or share failed
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href)
+        .then(() => alert("Link copied to clipboard!"));
     }
   });
 }
