@@ -265,6 +265,7 @@ if (heroSection) {
 
 // ===================== FOLLOW BUTTON =====================
 const followBtn = document.getElementById("followBtn");
+const followCountDisplay = document.getElementById("followCount");
 let baseFollowers = 120;
 
 if (followBtn && followCountDisplay) {
@@ -297,7 +298,8 @@ if (followBtn && followCountDisplay) {
 
 // ===================== SHARE BUTTON =====================
 const shareBtn = document.getElementById("shareBtn");
-const shareCountDisplay = document.getElementById("sh= 45;
+const shareCountDisplay = document.getElementById("shareCount");
+let baseShares = 45;
 
 if (shareBtn && shareCountDisplay) {
   // Initialize share count
@@ -328,6 +330,39 @@ if (shareBtn && shareCountDisplay) {
         });
     } else {
       prompt("Copy this link to share:", window.location.href);
+    }
+  });
+}
+
+// ===================== LIKE BUTTON =====================
+const likeBtn = document.getElementById("likeBtn");
+const likeCountDisplay = document.getElementById("likeCount");
+let baseLikes = 85;
+
+if (likeBtn && likeCountDisplay) {
+  // Check local storage
+  const isLiked = localStorage.getItem("isLiked") === "true";
+  
+  if (isLiked) {
+    likeBtn.innerHTML = 'Liked <i class="fas fa-heart"></i>';
+    likeBtn.style.color = "#ff6b6b";
+    likeCountDisplay.innerText = `${baseLikes + 1} Likes`;
+  } else {
+    likeCountDisplay.innerText = `${baseLikes} Likes`;
+  }
+
+  likeBtn.addEventListener("click", () => {
+    const isLiked = localStorage.getItem("isLiked") === "true";
+    if (isLiked) {
+      localStorage.removeItem("isLiked");
+      likeBtn.innerHTML = 'Like <i class="far fa-heart"></i>';
+      likeBtn.style.color = "";
+      likeCountDisplay.innerText = `${baseLikes} Likes`;
+    } else {
+      localStorage.setItem("isLiked", "true");
+      likeBtn.innerHTML = 'Liked <i class="fas fa-heart"></i>';
+      likeBtn.style.color = "#ff6b6b";
+      likeCountDisplay.innerText = `${baseLikes + 1} Likes`;
     }
   });
 }
