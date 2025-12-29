@@ -302,9 +302,14 @@ if (shareBtn) {
       } catch (err) {
         // User cancelled or share failed
       }
-    } else {
+    } else if (navigator.clipboard) {
       navigator.clipboard.writeText(window.location.href)
-        .then(() => alert("Link copied to clipboard!"));
+        .then(() => alert("Link copied to clipboard!"))
+        .catch(() => {
+          prompt("Copy this link to share:", window.location.href);
+        });
+    } else {
+      prompt("Copy this link to share:", window.location.href);
     }
   });
 }
