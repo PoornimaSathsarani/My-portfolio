@@ -262,3 +262,20 @@ if (heroSection) {
     heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('${heroImages[heroIndex]}')`;
   }, 3000);
 }
+
+// ===================== FOLLOW BUTTON =====================
+const followBtn = document.getElementById("followBtn");
+if (followBtn) {
+  followBtn.addEventListener("click", () => {
+    if (followBtn.innerText === "Follow Website") {
+      followBtn.innerText = "Following";
+      followBtn.style.backgroundColor = "#5fe28b";
+      followBtn.style.color = "white";
+      alert("Thank you for following! You will receive notifications.");
+    } else {
+      followBtn.innerText = "Follow Website";
+      followBtn.style.backgroundColor = "";
+      followBtn.style.color = "";
+    }
+  });
+}
