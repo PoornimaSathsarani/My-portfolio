@@ -8,6 +8,16 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  .btn.subscribe-btn {
+    background-color: #ff6b6b; /* Vibrant Coral Color */
+    border-color: #ff6b6b;
+    color: white;
+  }
+  .btn.subscribe-btn:hover {
+    background-color: #ee5253; /* Darker shade on hover */
+  }
+</style>
 </head>
 
 <body>
@@ -41,6 +51,7 @@
   <p>Web Developer | Healthcare Technology Enthusiast</p>
   <a href="#contact" class="btn">Hire Me</a>
   <a href="cv.pdf" class="btn" download>Download CV</a>
+  <a href="#newsletter" class="btn">Subscribe</a>
 </header>
 
 <!-- ABOUT -->
@@ -123,7 +134,7 @@
       <img src="images/blog02.jpeg" alt="University Practical">
       <h3>University Practical</h3>
       <p>Academic based web application for practical assessment</p>
-      <button class="btn project-btn">View Details</button>
+      <button class="btn project-btn">View Details</bi neeutton>
       <a href="blog2.html" class="read-more">
         Read More <i class="fas fa-arrow-right"></i>
       </a>
@@ -225,12 +236,12 @@
   </div>
   <div class="pagination" id="blogPagination"></div>
 
-  <div class="newsletter">
+  <div class="newsletter" id="newsletter">
     <h3>Subscribe to my Newsletter</h3>
     <p>Get the latest updates and articles directly in your inbox.</p>
     <form id="newsletterForm">
       <input type="email" placeholder="Enter your email" required>
-      <button type="submit" class="btn">Subscribe</button>
+      <button type="submit" class="btn subscribe-btn">Subscribe</button>
     </form>
   </div>
 </section>
