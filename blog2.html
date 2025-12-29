@@ -7,6 +7,37 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    .project-container {
+      max-width: 800px;
+      margin: 100px auto 0;
+      text-align: left;
+    }
+    .project-meta {
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+    .project-img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      object-fit: cover;
+    }
+    .content-block {
+      line-height: 1.8;
+    }
+    .section-title {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .feature-list {
+      margin: 10px 0 20px 20px;
+    }
+    .back-btn-container {
+      margin-top: 40px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
@@ -22,24 +53,24 @@
 </nav>
 
 <!-- CONTENT -->
-<section class="section fade-in" style="max-width: 800px; margin: 100px auto 0; text-align: left;">
-  <h1 style="color: var(--primary); margin-bottom: 10px;">University Practical Assessment</h1>
-  <p style="margin-bottom: 20px; opacity: 0.8;"><i class="far fa-calendar-alt"></i> November 2023 | <i class="fas fa-university"></i> Academic Project</p>
+<section class="section fade-in project-container">
+  <h1 class="section-title">University Practical Assessment</h1>
+  <p class="project-meta"><i class="far fa-calendar-alt"></i> November 2023 | <i class="fas fa-university"></i> Academic Project</p>
   
-  <img src="images/2blog.jpg" alt="University Practical" style="width: 100%; border-radius: 15px; margin-bottom: 30px; object-fit: cover;">
+  <img src="images/2blog.jpg" alt="University Practical" class="project-img">
   
-  <div style="line-height: 1.8;">
-    <h3 style="color: var(--primary); margin-bottom: 10px;">Overview</h3>
+  <div class="content-block">
+    <h3 class="section-title">Overview</h3>
     <p>
       This web application was developed as part of a university practical assessment. 
       The goal was to demonstrate a solid understanding of core web technologies while integrating biomedical concepts relevant to my degree.
     </p>
     <br>
-    <h3 style="color: var(--primary); margin-bottom: 10px;">Key Features</h3>
+    <h3 class="section-title">Key Features</h3>
     <p>
       The project focuses on usability and accessibility within a healthcare context.
     </p>
-    <ul style="margin: 10px 0 20px 20px;">
+    <ul class="feature-list">
       <li>Interactive user interface for data entry.</li>
       <li>Validation of biomedical data inputs.</li>
       <li>Responsive design for tablet and mobile usage in clinical settings.</li>
@@ -47,7 +78,7 @@
     </ul>
   </div>
 
-  <div style="margin-top: 40px; text-align: center;">
+  <div class="back-btn-container">
     <a href="index.html#projects" class="btn">Back to Projects</a>
   </div>
 </section>
