@@ -265,11 +265,16 @@ if (heroSection) {
 
 // ===================== FOLLOW BUTTON =====================
 const followBtn = document.getElementById("followBtn");
-if (followBtn) {
+let baseFollowers = 120;
+
+if (followBtn && followCountDisplay) {
   if (localStorage.getItem("isFollowing") === "true") {
     followBtn.innerText = "Following";
     followBtn.style.backgroundColor = "#5fe28b";
     followBtn.style.color = "white";
+    followCountDisplay.innerText = `${baseFollowers + 1} Followers`;
+  } else {
+    followCountDisplay.innerText = `${baseFollowers} Followers`;
   }
 
   followBtn.addEventListener("click", () => {
@@ -278,20 +283,33 @@ if (followBtn) {
       followBtn.style.backgroundColor = "#5fe28b";
       followBtn.style.color = "white";
       localStorage.setItem("isFollowing", "true");
+      followCountDisplay.innerText = `${baseFollowers + 1} Followers`;
       alert("Thank you for following! You will receive notifications.");
     } else {
       followBtn.innerText = "Follow Website";
       followBtn.style.backgroundColor = "";
       followBtn.style.color = "";
       localStorage.removeItem("isFollowing");
+      followCountDisplay.innerText = `${baseFollowers} Followers`;
     }
   });
 }
 
 // ===================== SHARE BUTTON =====================
 const shareBtn = document.getElementById("shareBtn");
-if (shareBtn) {
+const shareCountDisplay = document.getElementById("sh= 45;
+
+if (shareBtn && shareCountDisplay) {
+  // Initialize share count
+  let localShares = parseInt(localStorage.getItem("userShareCount") || "0");
+  shareCountDisplay.innerText = `${baseShares + localShares} Shares`;
+
   shareBtn.addEventListener("click", async () => {
+    // Increment count
+    localShares++;
+    localStorage.setItem("userShareCount", localShares);
+    shareCountDisplay.innerText = `${baseShares + localShares} Shares`;
+
     if (navigator.share) {
       try {
         await navigator.share({
