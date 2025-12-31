@@ -282,68 +282,76 @@ if (heroSection) {
 // ===================== FOLLOW BUTTON =====================
 const followBtn = document.getElementById("followBtn");
 const followCountDisplay = document.getElementById("followCount");
-let baseFollowers = 120;
+const baseFollowers = 120;
 
 if (followBtn && followCountDisplay) {
-  if (localStorage.getItem("isFollowing") === "true") {
-    followBtn.innerText = "Following";
-    followBtn.style.backgroundColor = "#5fe28b";
-    followBtn.style.color = "white";
-    followCountDisplay.innerText = `${baseFollowers + 1} Followers`;
-  } else {
-    followCountDisplay.innerText = `${baseFollowers} Followers`;
-  }
+  // Helper to safely get storage
+  const getStoredFollow = () => {
+    try { return localStorage.getItem("isFollowing") === "true"; } catch(e) { return false; }
+  };
 
-  followBtn.addEventListener("click", () => {
-    if (followBtn.innerText === "Follow Website") {
+  const updateFollowUI = (isFollowing) => {
+    if (isFollowing) {
       followBtn.innerText = "Following";
       followBtn.style.backgroundColor = "#5fe28b";
       followBtn.style.color = "white";
-      localStorage.setItem("isFollowing", "true");
       followCountDisplay.innerText = `${baseFollowers + 1} Followers`;
-      alert("Thank you for following! You will receive notifications.");
     } else {
       followBtn.innerText = "Follow Website";
       followBtn.style.backgroundColor = "";
       followBtn.style.color = "";
-      localStorage.removeItem("isFollowing");
       followCountDisplay.innerText = `${baseFollowers} Followers`;
     }
+  };
+
+  // Initialize
+  updateFollowUI(getStoredFollow());
+
+  followBtn.addEventListener("click", () => {
+    const isNowFollowing = !getStoredFollow();
+    updateFollowUI(isNowFollowing);
+    
+    try {
+      if (isNowFollowing) {
+        localStorage.setItem("isFollowing", "true");
+        const subject = "New Website Follower";
+        const body = "Hi, I just clicked the Follow button on your portfolio website!";
+        window.location.href = `mailto:poornimasathsarani62@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+      } else {
+        localStorage.removeItem("isFollowing");
+      }
+    } catch(e) {}
   });
 }
 
 // ===================== SHARE BUTTON =====================
 const shareBtn = document.getElementById("shareBtn");
 const shareCountDisplay = document.getElementById("shareCount");
-let baseShares = 45;
+const baseShares = 45;
 
 if (shareBtn && shareCountDisplay) {
-  // Initialize share count
-  let localShares = parseInt(localStorage.getItem("userShareCount") || "0");
+  let localShares = 0;
+  try { localShares = parseInt(localStorage.getItem("userShareCount") || "0"); } catch(e) {}
+  
   shareCountDisplay.innerText = `${baseShares + localShares} Shares`;
 
   shareBtn.addEventListener("click", async () => {
-    // Increment count
     localShares++;
-    localStorage.setItem("userShareCount", localShares);
+    try { localStorage.setItem("userShareCount", localShares); } catch(e) {}
     shareCountDisplay.innerText = `${baseShares + localShares} Shares`;
 
+    const shareData = {
+      title: document.title,
+      text: "Check out this portfolio!",
+      url: window.location.href,
+    };
+
     if (navigator.share) {
-      try {
-        await navigator.share({
-          title: document.title,
-          text: "Check out this portfolio!",
-          url: window.location.href,
-        });
-      } catch (err) {
-        // User cancelled or share failed
-      }
+      try { await navigator.share(shareData); } catch (err) {}
     } else if (navigator.clipboard) {
       navigator.clipboard.writeText(window.location.href)
         .then(() => alert("Link copied to clipboard!"))
-        .catch(() => {
-          prompt("Copy this link to share:", window.location.href);
-        });
+        .catch(() => prompt("Copy this link to share:", window.location.href));
     } else {
       prompt("Copy this link to share:", window.location.href);
     }
@@ -353,32 +361,34 @@ if (shareBtn && shareCountDisplay) {
 // ===================== LIKE BUTTON =====================
 const likeBtn = document.getElementById("likeBtn");
 const likeCountDisplay = document.getElementById("likeCount");
-let baseLikes = 85;
+const baseLikes = 85;
 
 if (likeBtn && likeCountDisplay) {
-  // Check local storage
-  const isLiked = localStorage.getItem("isLiked") === "true";
+  const getStoredLike = () => {
+    try { return localStorage.getItem("isLiked") === "true"; } catch(e) { return false; }
+  };
   
-  if (isLiked) {
-    likeBtn.innerHTML = 'Liked <i class="fas fa-heart"></i>';
-    likeBtn.style.color = "#ff6b6b";
-    likeCountDisplay.innerText = `${baseLikes + 1} Likes`;
-  } else {
-    likeCountDisplay.innerText = `${baseLikes} Likes`;
-  }
-
-  likeBtn.addEventListener("click", () => {
-    const isLiked = localStorage.getItem("isLiked") === "true";
+  const updateLikeUI = (isLiked) => {
     if (isLiked) {
-      localStorage.removeItem("isLiked");
-      likeBtn.innerHTML = 'Like <i class="far fa-heart"></i>';
-      likeBtn.style.color = "";
-      likeCountDisplay.innerText = `${baseLikes} Likes`;
-    } else {
-      localStorage.setItem("isLiked", "true");
       likeBtn.innerHTML = 'Liked <i class="fas fa-heart"></i>';
       likeBtn.style.color = "#ff6b6b";
       likeCountDisplay.innerText = `${baseLikes + 1} Likes`;
+    } else {
+      likeBtn.innerHTML = 'Like <i class="far fa-heart"></i>';
+      likeBtn.style.color = "";
+      likeCountDisplay.innerText = `${baseLikes} Likes`;
     }
+  };
+
+  updateLikeUI(getStoredLike());
+
+  likeBtn.addEventListener("click", () => {
+    const isNowLiked = !getStoredLike();
+    updateLikeUI(isNowLiked);
+    
+    try {
+      if (isNowLiked) localStorage.setItem("isLiked", "true");
+      else localStorage.removeItem("isLiked");
+    } catch(e) {}
   });
 }
