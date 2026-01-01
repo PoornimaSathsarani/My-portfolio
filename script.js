@@ -266,10 +266,10 @@ if (newsletterForm) {
 // ===================== HERO BACKGROUND SLIDER =====================
 const heroSection = document.querySelector(".hero");
 const heroImages = [
-    "images/background 01.jpeg",
+  "images/background 01.jpeg",
   "images/background 02.jpeg",
   "images/background 03.jpeg"
- ];
+];
 let heroIndex = 0;
 
 if (heroSection) {
@@ -284,6 +284,9 @@ const followBtn = document.getElementById("followBtn");
 const followCountDisplay = document.getElementById("followCount");
 const baseFollowers = 120;
 
+// NOTE: This implementation uses localStorage, which saves data ONLY on the visitor's browser.
+// You (the owner) will not see these counts increase unless you connect this to a database.
+// For "Follow", you rely on the user actually sending the email to know they followed.
 if (followBtn && followCountDisplay) {
   // Helper to safely get storage
   const getStoredFollow = () => {
@@ -329,6 +332,7 @@ const shareBtn = document.getElementById("shareBtn");
 const shareCountDisplay = document.getElementById("shareCount");
 const baseShares = 45;
 
+// NOTE: Counts are stored locally. To track real shares, integrate Google Analytics or a backend.
 if (shareBtn && shareCountDisplay) {
   let localShares = 0;
   try { localShares = parseInt(localStorage.getItem("userShareCount") || "0"); } catch(e) {}
@@ -363,6 +367,7 @@ const likeBtn = document.getElementById("likeBtn");
 const likeCountDisplay = document.getElementById("likeCount");
 const baseLikes = 85;
 
+// NOTE: Counts are stored locally. To track real likes, you need a database (e.g., Firebase).
 if (likeBtn && likeCountDisplay) {
   const getStoredLike = () => {
     try { return localStorage.getItem("isLiked") === "true"; } catch(e) { return false; }
