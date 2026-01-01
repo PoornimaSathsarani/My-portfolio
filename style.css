@@ -127,36 +127,11 @@ body {
   transition: background-image 1s ease-in-out;
 }
 
-#particles-js {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
 .hero h1,
 .hero p,
 .hero .btn {
   position: relative;
   z-index: 1;
-}
-.hero-title {
-  font-size: 42px;
-  font-weight: 700;
-  color: white;
-  text-align: center;
-  transform: translateY(20px);
-  opacity: 0;
-  animation: slideIn 1.5s forwards;
-}
-
-@keyframes slideIn {
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
 }
 
 .hero-img {
@@ -881,47 +856,4 @@ body.dark .newsletter input {
   background: #444;
   border-color: #555;
   color: white;
-}
-
-/* COMMUNITY */
-.community-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.subscriber-card {
-  background: white;
-  padding: 15px 25px;
-  border-radius: 50px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: transform 0.3s ease;
-}
-
-.subscriber-card:hover {
-  transform: translateY(-5px);
-}
-
-.subscriber-card i {
-  font-size: 20px;
-  color: var(--primary);
-}
-
-.subscriber-card h4 {
-  font-size: 16px;
-  font-weight: 500;
-  margin: 0;
-}
-
-body.dark .subscriber-card {
-  background: #2d2d2d;
-  color: #f4f4f4;
 }
