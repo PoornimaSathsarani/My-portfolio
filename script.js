@@ -1,4 +1,4 @@
-// ===================== PRELOADER =====================
+/ ===================== PRELOADER =====================
 window.addEventListener("load", () => {
   const preloader = document.getElementById("preloader");
   if (preloader) preloader.style.display = "none";
@@ -61,10 +61,10 @@ if (contactForm) {
     e.preventDefault();
     
     // TODO: Register at https://formspree.io/ and replace this ID with your own
-    const formspreeId = "YOUR_FORMSPREE_ID"; 
+    const formspreeId = "https://formspree.io/f/xojvveyg"; 
     const formData = new FormData(e.target);
 
-    if (formspreeId === "YOUR_FORMSPREE_ID") {
+    if (formspreeId === "https://formspree.io/f/xojvveyg") {
       // Fallback to Mailto
       const name = formData.get("name");
       const email = formData.get("email");
@@ -157,15 +157,15 @@ if (slider && slides.length > 0) {
   const prevSlide = () => { currentSlide = (currentSlide - 1 + slides.length) % slides.length; updateSlider(); };
   nextBtn && nextBtn.addEventListener("click", nextSlide);
   prevBtn && prevBtn.addEventListener("click", prevSlide);
-  setInterval(nextSlide, 5000);
+  setInterval(nextSlide, 3000);
 }
 
 // ===================== BLOG SEARCH & PAGINATION =====================
 const blogSearchInput = document.getElementById("blogSearch");
 const allBlogCards = document.querySelectorAll("#blog .blog-card");
 const blogPagination = document.getElementById("blogPagination");
-let currentPage = 1;
-const itemsPerPage = 1;
+let currentPage = 2;
+const itemsPerPage = 2;
 
 const displayBlogPosts = (page) => {
   allBlogCards.forEach((card, index) => {
@@ -253,14 +253,14 @@ const newsletterForm = document.getElementById("newsletterForm");
 if (newsletterForm) {
   newsletterForm.addEventListener("submit", e => {
     e.preventDefault();
-    const email = e.target.querySelector('input[type="email"]').value;
+    const email = e.target.querySelector('input[type="poornimasathsarani62@gmail.com"]').value;
     
     // --- INSTRUCTION ---
     // To get real emails, register at https://formspree.io/ and create a new form.
     // Replace "YOUR_FORMSPREE_ID" below with the ID they give you (e.g., "xwqbjqrz").
-    const formspreeId = "YOUR_FORMSPREE_ID"; 
+    const formspreeId = "https://formspree.io/f/xojvveyg"; 
 
-    if (formspreeId !== "YOUR_FORMSPREE_ID") {
+    if (formspreeId !== "https://formspree.io/f/xojvveyg") {
       // Use Formspree service
       fetch(`https://formspree.io/f/${formspreeId}`, {
         method: 'POST',
@@ -300,7 +300,7 @@ if (heroSection) {
 // ===================== FOLLOW BUTTON =====================
 const followBtn = document.getElementById("followBtn");
 const followCountDisplay = document.getElementById("followCount");
-const baseFollowers = 120;
+const baseFollowers = 0;
 
 // NOTE: This implementation uses localStorage, which saves data ONLY on the visitor's browser.
 // You (the owner) will not see these counts increase unless you connect this to a database.
@@ -348,7 +348,7 @@ if (followBtn && followCountDisplay) {
 // ===================== SHARE BUTTON =====================
 const shareBtn = document.getElementById("shareBtn");
 const shareCountDisplay = document.getElementById("shareCount");
-const baseShares = 45;
+const baseShares = 0;
 
 // NOTE: Counts are stored locally. To track real shares, integrate Google Analytics or a backend.
 if (shareBtn && shareCountDisplay) {
@@ -383,7 +383,7 @@ if (shareBtn && shareCountDisplay) {
 // ===================== LIKE BUTTON =====================
 const likeBtn = document.getElementById("likeBtn");
 const likeCountDisplay = document.getElementById("likeCount");
-const baseLikes = 85;
+const baseLikes = 0;
 
 // NOTE: Counts are stored locally. To track real likes, you need a database (e.g., Firebase).
 if (likeBtn && likeCountDisplay) {
@@ -415,3 +415,4 @@ if (likeBtn && likeCountDisplay) {
     } catch(e) {}
   });
 }
+
