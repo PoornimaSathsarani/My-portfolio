@@ -68,7 +68,7 @@ if (contactForm) {
 
     const subject = `Portfolio Contact from ${name}`;
     const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
-    window.location.href = `mailto:yourname@example.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    window.location.href = `mailto:poornimasathsarani62@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
 
     e.target.reset();
   });
