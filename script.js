@@ -59,18 +59,36 @@ const contactForm = document.getElementById("contactForm");
 if (contactForm) {
   contactForm.addEventListener("submit", e => {
     e.preventDefault();
-    const name = e.target.querySelector('input[type="text"]').value;
-    const email = e.target.querySelector('input[type="email"]').value.trim();
-    const message = e.target.querySelector('textarea').value;
+    
+    // TODO: Register at https://formspree.io/ and replace this ID with your own
+    const formspreeId = "YOUR_FORMSPREE_ID"; 
+    const formData = new FormData(e.target);
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) return alert("Please enter a valid email.");
-
-    const subject = `Portfolio Contact from ${name}`;
-    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
-    window.location.href = `mailto:poornimasathsarani62@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-
-    e.target.reset();
+    if (formspreeId === "YOUR_FORMSPREE_ID") {
+      // Fallback to Mailto
+      const name = formData.get("name");
+      const email = formData.get("email");
+      const message = formData.get("message");
+      const subject = `Portfolio Contact from ${name}`;
+      const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
+      window.location.href = `mailto:dpswijenayake@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+      e.target.reset();
+    } else {
+      fetch(`https://formspree.io/f/${formspreeId}`, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          alert("Message sent successfully!");
+          e.target.reset();
+        } else {
+          alert("Oops! There was a problem sending your message.");
+        }
+      }).catch(error => {
+        alert("Error sending message. Please try again.");
+      });
+    }
   });
 }
 
@@ -257,7 +275,7 @@ if (newsletterForm) {
       if (email) alert(`Thank you! Your email app will now open. Please send the email to complete your subscription.`);
       const subject = "Newsletter Subscription";
       const body = `Please add ${email} to your newsletter list.`;
-      window.location.href = `mailto:poornimasathsarani62@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+      window.location.href = `mailto:dpswijenayake@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
       e.target.reset();
     }
   });
@@ -319,7 +337,7 @@ if (followBtn && followCountDisplay) {
         localStorage.setItem("isFollowing", "true");
         const subject = "New Website Follower";
         const body = "Hi, I just clicked the Follow button on your portfolio website!";
-        window.location.href = `mailto:poornimasathsarani62@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+        window.location.href = `mailto:dpswijenayake@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
       } else {
         localStorage.removeItem("isFollowing");
       }
